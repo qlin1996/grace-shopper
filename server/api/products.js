@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const Product = require('../db/models/product')
 
-//GET --> /API/PRODUCTS
+//GET --> /api/products
 router.get('/', async (req, res, next) => {
   try {
     const products = await Product.findAll()
@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-//GET --> /API/PRODUCTS/:ID
+//GET --> /api/products/:id
 router.get('/:id', async (req, res, next) => {
   try {
     const product = await Product.findOne({
