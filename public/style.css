@@ -20,6 +20,16 @@ form div {
   display: inline-block;
 }
 
+img {
+  height: 200px;
+  width: 200px;
+}
+
+.flex {
+  display: flex;
+ }
+
+
 .nav-logo {
   width: 530px;
   height: 160px;
