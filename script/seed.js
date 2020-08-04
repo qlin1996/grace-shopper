@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Product, ShoppingCart} = require('../server/db/models')
+const {User, Product} = require('../server/db/models')
 
 const products = [
   {
@@ -24,16 +24,14 @@ const users = [
     firstName: 'Daniel',
     lastName: 'polc',
     email: 'polc@gmail.com',
-    address: '23 something',
+    streetAddress: '23 something',
+    city: 'nyc',
+    state: 'new york',
+    zipCode: 11234,
     password: 'bjcsdubvibjv'
   }
 ]
-const shoppingCart = [
-  {
-    quantity: 10,
-    price: 20
-  }
-]
+
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
@@ -47,12 +45,6 @@ async function seed() {
   await Promise.all(
     users.map(user => {
       return User.create(user)
-    })
-  )
-
-  await Promise.all(
-    shoppingCart.map(item => {
-      return ShoppingCart.create(item)
     })
   )
 
