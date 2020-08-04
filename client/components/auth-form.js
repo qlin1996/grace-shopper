@@ -12,63 +12,141 @@ const AuthForm = props => {
   return (
     <div>
       {displayName === 'Sign Up' ? (
-        <form onSubmit={handleSubmit} name={name}>
+        <form onSubmit={handleSubmit} name={name} className="auth-forms">
           <div>
             <label htmlFor="firstName">
               <small>First Name</small>
             </label>
             <input name="firstName" type="text" />
           </div>
+          <br />
           <div>
             <label htmlFor="lastName">
               <small>Last Name</small>
             </label>
             <input name="lastName" type="text" />
           </div>
+          <br />
           <div>
-            <label htmlFor="address">
-              <small>Address </small>
+            <label htmlFor="location">
+              <small>Location </small>
             </label>
-            <input name="address" type="text" />
+            <select id="select-state">
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AZ">Arizona</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="DC">District of Columbia</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="HI">Hawaii</option>
+              <option value="ID">Idaho</option>
+              <option value="IL">Illinois</option>
+              <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
+              <option value="KS">Kansas</option>
+              <option value="KY">Kentucky</option>
+              <option value="LA">Louisiana</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
+              <option value="MS">Mississippi</option>
+              <option value="MO">Missouri</option>
+              <option value="MT">Montana</option>
+              <option value="NE">Nebraska</option>
+              <option value="NV">Nevada</option>
+              <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="ND">North Dakota</option>
+              <option value="OH">Ohio</option>
+              <option value="OK">Oklahoma</option>
+              <option value="OR">Oregon</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SC">South Carolina</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="TX">Texas</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WA">Washington</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
+            </select>
           </div>
+          <br />
           <div>
             <label htmlFor="email">
               <small>Email</small>
             </label>
             <input name="email" type="text" />
           </div>
+          <br />
           <div>
             <label htmlFor="password">
               <small>Password</small>
             </label>
             <input name="password" type="password" />
           </div>
+          <br />
           <div>
-            <button type="submit">{displayName}</button>
+            <button type="submit" className="auth-button1">
+              {displayName}
+            </button>
           </div>
-          {error && error.response && <div> {error.response.data} </div>}
+          <br />
+          {error &&
+            error.response && (
+              <div className="error-message"> {error.response.data} </div>
+            )}
+          <button type="button" className="auth-google-button1">
+            <a href="/auth/google">{displayName} with Google</a>
+          </button>
+          <img src="/google.png" alt="image" className="google-logo1" />
         </form>
       ) : (
-        <form onSubmit={handleSubmit} name={name}>
+        <form onSubmit={handleSubmit} name={name} className="auth-forms">
           <div>
             <label htmlFor="email">
               <small>Email</small>
             </label>
             <input name="email" type="text" />
           </div>
+          <br />
           <div>
             <label htmlFor="password">
               <small>Password</small>
             </label>
             <input name="password" type="password" />
           </div>
+          <br />
           <div>
-            <button type="submit">{displayName}</button>
+            <button type="submit" className="auth-button2">
+              {displayName}
+            </button>
           </div>
-          {error && error.response && <div> {error.response.data} </div>}
+          <br />
+          {error &&
+            error.response && (
+              <div className="error-message"> {error.response.data} </div>
+            )}
+          <button type="button" className="auth-google-button2">
+            <a href="/auth/google">{displayName} with Google</a>
+          </button>
+          <img src="/google.png" alt="image" className="google-logo2" />
         </form>
       )}
-      <a href="/auth/google">{displayName} with Google</a>
     </div>
   )
 }

@@ -19,3 +19,89 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.auth-forms {
+  padding: 35px;
+  margin: 35px;
+  width: 70%;
+  background-color: #575f7a;
+  position: absolute;
+  left: 8.5%;
+  font-size: 20px;
+}
+
+.select-state {
+  color: yellow;
+}
+
+.auth-button1 {
+  margin: 7px;
+  padding: 7px;
+  background-color: white;
+  margin: 10;
+  position: absolute;
+  left: 6%;
+  bottom: 4%;
+}
+.auth-button2 {
+  margin: 7px;
+  padding: 7px;
+  margin: 10;
+  background-color: white;
+  position: absolute;
+  left: 6%;
+  bottom: 10.5%;
+}
+
+.auth-google-button1 {
+  margin: 7px;
+  padding: 7px;
+  background-color: white;
+  position: absolute;
+  left: 38%;
+  bottom: 2%;
+}
+.auth-google-button2 {
+  margin: 7px;
+  padding: 7px;
+  position: absolute;
+  background-color: white;
+  left: 38%;
+  bottom: 10%;
+}
+
+input {
+  width: 150px;
+  height: 30px;
+}
+
+select {
+  width: 160px;
+  height: 40px;
+}
+
+.google-logo1 {
+  width: 30px;
+  height: 29.6px;
+  position: absolute;
+  bottom: 3.2%;
+  border-bottom: solid 2px black;
+  border-top: solid 2px gray;
+  left: 56.1%;
+}
+
+.google-logo2 {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  bottom: 12%;
+  border-bottom: solid 2px black;
+  border-top: solid 2px gray;
+  left: 54%;
+}
+
+.error-message {
+  position: absolute;
+  bottom: -10%;
+  font-size: 12px;
+}
