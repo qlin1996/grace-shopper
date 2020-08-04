@@ -24,7 +24,6 @@ const AuthForm = props => {
               </label>
               <input name="firstName" type="text" />
             </div>
-            <br />
             <div>
               <label htmlFor="lastName">
                 <small>Last Name</small>
@@ -33,8 +32,20 @@ const AuthForm = props => {
             </div>
             <br />
             <div>
-              <label htmlFor="location">
-                <small>Location </small>
+              <label htmlFor="streetAddress">
+                <small>Street</small>
+              </label>
+              <input name="streetAddress" type="text" />
+            </div>
+            <div>
+              <label htmlFor="city">
+                <small>City</small>
+              </label>
+              <input name="city" type="text" />
+            </div>
+            <div>
+              <label htmlFor="state">
+                <small>State </small>
               </label>
               <select id="select-state">
                 <option value="AL">Alabama</option>
@@ -89,6 +100,12 @@ const AuthForm = props => {
                 <option value="WI">Wisconsin</option>
                 <option value="WY">Wyoming</option>
               </select>
+            </div>
+            <div>
+              <label htmlFor="zipCode">
+                <small>Zip Code</small>
+              </label>
+              <input name="zipCode" type="text" />
             </div>
             <br />
             <div>
