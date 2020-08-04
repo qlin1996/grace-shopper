@@ -14,8 +14,9 @@ class Products extends Component {
           return (
             <div key={product.id}>
               <Link to={`/products/${product.id}`}>
-                <h1>{product.name}</h1>
+                <h1> Name: {product.name}</h1>
                 <img src={product.imageUrl} />
+                <h3> Price: {product.price}</h3>
               </Link>
             </div>
           )
