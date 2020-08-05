@@ -10,7 +10,7 @@ const OrderItem = require('./order-item')
  *    BlogPost.belongsTo(User)
  */
 User.hasMany(Order)
-Order.hasMany(Product)
+Order.hasMany(OrderItem)
 OrderItem.hasOne(Product)
 
 /**
