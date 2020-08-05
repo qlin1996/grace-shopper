@@ -3,10 +3,26 @@ import {connect} from 'react-redux'
 import {fetchProducts} from '../store/products'
 import {Link} from 'react-router-dom'
 
-export class AllProducts extends Component {
-  componentDidMount() {}
+class Products extends Component {
+  componentDidMount() {
+    this.props.getProducts()
+  }
   render() {
-    return <h1>hi</h1>
+    return (
+      <div>
+        {this.props.products.map(product => {
+          return (
+            <div key={product.id}>
+              <Link to={`/products/${product.id}`}>
+                <h1> Name: {product.name}</h1>
+                <img src={product.imageUrl} />
+                <h3> Price: {product.price}</h3>
+              </Link>
+            </div>
+          )
+        })}
+      </div>
+    )
   }
 }
 
@@ -18,4 +34,4 @@ const mapDispatch = dispatch => ({
   getProducts: () => dispatch(fetchProducts())
 })
 
-export default connect(mapToState, mapDispatch)(AllProducts)
+export default connect(mapToState, mapDispatch)(Products)
