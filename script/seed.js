@@ -1,20 +1,20 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Product} = require('../server/db/models')
+const {User, Product, Order, OrderItem} = require('../server/db/models')
 
 const products = [
   {
     name: 'head & shoulders',
     description: 'good for your hair',
-    price: 7.99,
+    price: 799,
     quantity: 10
   },
-  {name: 'axe', description: 'you will smell good', price: 5.99, quantity: 10},
+  {name: 'axe', description: 'you will smell good', price: 599, quantity: 10},
   {
     name: 'cantu',
     description: 'good for your hair',
-    price: 10.99,
+    price: 1099,
     quantity: 10
   }
 ]
@@ -32,6 +32,30 @@ const users = [
   }
 ]
 
+const orders = [
+  {
+    totalPrice: 100,
+    date: Date.now(),
+    userId: 1
+  },
+  {
+    totalPrice: 200,
+    date: Date.now(),
+    userId: 1
+  }
+]
+
+const orderItems = [
+  {
+    quantity: 2,
+    price: 1099
+  },
+  {
+    quantity: 5,
+    price: 1000099
+  }
+]
+
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
@@ -45,6 +69,18 @@ async function seed() {
   await Promise.all(
     users.map(user => {
       return User.create(user)
+    })
+  )
+
+  await Promise.all(
+    orders.map(order => {
+      return Order.create(order)
+    })
+  )
+
+  await Promise.all(
+    orderItems.map(orderItem => {
+      return OrderItem.create(orderItem)
     })
   )
 
