@@ -13,7 +13,11 @@ const OrderItem = db.define('orderItem', {
     type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
-      notEmpty: true
+      isNumeric: true,
+      min: 1
+    },
+    get() {
+      return this.getDataValue('price') / 100
     }
   }
   // hooks: {

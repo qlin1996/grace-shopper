@@ -12,9 +12,12 @@ const Order = db.define('order', {
   },
   totalPrice: {
     type: Sequelize.INTEGER,
-    allowNull: false,
     validate: {
-      notEmpty: true
+      isNumeric: true,
+      min: 1
+    },
+    get() {
+      return this.getDataValue('price') / 100
     }
   },
   //to allow users to potentially sort their order
