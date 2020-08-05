@@ -12,11 +12,11 @@ router.get('/', async (req, res, next) => {
 })
 
 //GET --> /api/products/:id
-router.get('/:productId', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const product = await Product.findOne({
       where: {
-        id: req.params.productId
+        id: req.params.id
       }
     })
     res.json(product)

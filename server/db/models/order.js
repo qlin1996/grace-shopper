@@ -7,7 +7,22 @@ const Order = db.define('order', {
     allowNull: false,
     validate: {
       notEmpty: true
+    },
+    defaultValue: 'no'
+  },
+  totalPrice: {
+    type: Sequelize.INTEGER,
+    validate: {
+      isNumeric: true,
+      min: 1
+    },
+    get() {
+      return this.getDataValue('price') / 100
     }
+  },
+  //to allow users to potentially sort their order
+  date: {
+    type: Sequelize.DATE
   }
 })
 
