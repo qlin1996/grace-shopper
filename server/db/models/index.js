@@ -10,7 +10,8 @@ const OrderItem = require('./order-item')
  *    BlogPost.belongsTo(User)
  */
 User.hasMany(Order)
-Order.hasMany(OrderItem)
+OrderItem.belongsToMany(Order, {through: 'cartItems'})
+// Order.hasMany(OrderItem)
 OrderItem.hasOne(Product)
 
 /**
