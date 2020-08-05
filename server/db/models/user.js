@@ -26,12 +26,41 @@ const User = db.define('user', {
       notEmpty: true
     }
   },
-  address: {
-    type: Sequelize.TEXT,
+  streetAddress: {
+    type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: true
     }
+  },
+  city: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  state: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  zipCode: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  isAdmin: {
+    type: Sequelize.ENUM('yes', 'no'),
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    },
+    defaultValue: 'no'
   },
   password: {
     type: Sequelize.STRING,

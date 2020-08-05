@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-//Product Table
 const Product = db.define('product', {
   name: {
     type: Sequelize.STRING,
@@ -10,7 +9,6 @@ const Product = db.define('product', {
       notEmpty: true
     }
   },
-
   description: {
     type: Sequelize.TEXT,
     allowNull: false,
@@ -18,7 +16,6 @@ const Product = db.define('product', {
       notEmpty: true
     }
   },
-
   price: {
     type: Sequelize.FLOAT,
     allowNull: false,
@@ -26,7 +23,6 @@ const Product = db.define('product', {
       notEmpty: true
     }
   },
-
   imageUrl: {
     type: Sequelize.TEXT,
     allowNull: false,
