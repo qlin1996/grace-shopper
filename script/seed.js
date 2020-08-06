@@ -34,25 +34,16 @@ const users = [
 
 const orders = [
   {
-    totalPrice: 100,
-    date: Date.now(),
-    userId: 1
-  },
-  {
-    totalPrice: 200,
-    date: Date.now(),
     userId: 1
   }
 ]
 
-const orderItems = [
-  {
-    quantity: 2,
-    price: 1099
-  },
+const orderitems = [
   {
     quantity: 5,
-    price: 1000099
+    price: 799,
+    productId: 1,
+    orderId: 1
   }
 ]
 
@@ -79,8 +70,8 @@ async function seed() {
   )
 
   await Promise.all(
-    orderItems.map(orderItem => {
-      return OrderItem.create(orderItem)
+    orderitems.map(item => {
+      return OrderItem.create(item)
     })
   )
 
