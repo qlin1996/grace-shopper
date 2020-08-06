@@ -11,7 +11,7 @@ const OrderItem = db.define('orderItem', {
   },
   price: {
     type: Sequelize.INTEGER,
-    allowNull: false,
+    defaultValue: 100,
     validate: {
       isNumeric: true,
       min: 1
