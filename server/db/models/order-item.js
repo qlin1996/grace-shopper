@@ -20,11 +20,6 @@ const OrderItem = db.define('orderItem', {
       return this.getDataValue('price') / 100
     }
   }
-  // hooks: {
-  //   beforeSave() {
-  //     price = parseFloat(price)
-  //   },
-  // },
 })
 
 module.exports = OrderItem
