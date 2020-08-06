@@ -22,12 +22,11 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           {/* The navbar will show these links before you log in */}
 
           <Link to="/products">Products</Link>
-          
+          <Link to="/shipping-billing">Shipping</Link>
 
           <Link to="/login">LOGIN ⇋ SIGNUP</Link>
           {/* <Link to="/signup">Sign Up</Link> */}
           <Link to="/about">About Us</Link>
-
         </div>
       )}
     </nav>

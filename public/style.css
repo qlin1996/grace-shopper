@@ -27,12 +27,11 @@ img {
 
 .flex {
   display: flex;
- }
-
+}
 
 .nav-logo {
-  width: 530px;
-  height: 160px;
+  width: 430px;
+  height: 132px;
 }
 .icon-logo {
   width: 160px;
@@ -46,7 +45,6 @@ img {
   border-radius: 5%;
   margin: 35px;
   width: 70%;
-  background-color: #575f7a;
   position: absolute;
   top: 40%;
   left: 8.5%;
@@ -54,7 +52,7 @@ img {
 }
 
 .select-state {
-  color: yellow;
+  background-color: lightblue;
 }
 
 .auth-button1 {
@@ -102,6 +100,10 @@ input {
 select {
   width: 160px;
   height: 40px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  border-radius: 6%;
 }
 
 .google-logo1 {
@@ -141,13 +143,45 @@ select {
 .option-or {
   position: absolute;
   bottom: 15%;
-  color: white;
+  color: black;
   font-size: 16px;
   letter-spacing: 1.5px;
   text-decoration: underline solid blue;
 }
 
+.select#selectstate {
+  border-width: 1px;
+}
+
 #sign-up {
-  color: white;
+  color: black;
   text-decoration: underline solid blue;
+}
+
+.checkout-shipping-header {
+  position: absolute;
+  left: 41%;
+  font-size: 22px;
+  letter-spacing: 1px;
+  font-family: 'Times New Roman', Times, serif;
+  color: black;
+}
+
+.checkout-forms {
+  padding: 35px;
+  margin: 35px;
+  width: 70%;
+  position: absolute;
+  top: 40%;
+  left: 8.5%;
+  font-size: 20px;
+}
+
+.review-button {
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  position: absolute;
+  left: 78%;
+  bottom: -25%;
 }

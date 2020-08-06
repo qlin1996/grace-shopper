@@ -7,14 +7,14 @@ const products = [
   {
     name: 'head & shoulders',
     description: 'good for your hair',
-    price: 7.99,
+    price: 799,
     quantity: 10
   },
   {name: 'axe', description: 'you will smell good', price: 5.99, quantity: 10},
   {
     name: 'cantu',
     description: 'good for your hair',
-    price: 10.99,
+    price: 1099,
     quantity: 10
   }
 ]
