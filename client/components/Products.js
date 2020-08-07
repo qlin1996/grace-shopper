@@ -12,11 +12,11 @@ class Products extends Component {
       <div>
         {this.props.products.map(product => {
           return (
-            <div key={product.id}>
+            <div key={product.id} className="individual-product">
               <Link to={`/products/${product.id}`}>
-                <h1> Name: {product.name}</h1>
+                <h1 className="text-effects"> Name: {product.name}</h1>
                 <img src={product.imageUrl} />
-                <h3> Price: {product.price}</h3>
+                <h3 className="text-effects"> Price: {product.price}</h3>
               </Link>
             </div>
           )
