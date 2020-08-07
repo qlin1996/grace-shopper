@@ -3,7 +3,9 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 class Cart extends Component {
+  componentDidMount() {}
   render() {
+    console.log('Cart', this.props.cart)
     return (
       <div>
         <h1>Cart</h1>
@@ -15,4 +17,8 @@ class Cart extends Component {
   }
 }
 
-export default connect(null)(Cart)
+const mapToState = state => ({
+  cart: state.cart
+})
+const mapDispatch = dispatch => ({})
+export default connect(mapToState, mapDispatch)(Cart)

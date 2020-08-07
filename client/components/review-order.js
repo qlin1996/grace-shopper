@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 
 class ReviewOrder extends Component {
   componentDidMount() {
+    // hard coded user for now. need to pass down userId
     this.props.getUser(1)
   }
 
