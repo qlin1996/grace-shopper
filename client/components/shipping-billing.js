@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
 import {updateUser} from '../store/products'
 import {connect} from 'react-redux'
 
@@ -122,11 +121,6 @@ class Shipping extends Component {
             </label>
             <input name="zipCode" type="text" />
           </div>
-          <div>
-            <button className="review-button" type="submit">
-              Review Order
-            </button>
-          </div>
         </form>
         <form name={name} onClick={this.handleSelectSubmit}>
           <p>Use Shipping info for Billing Info?</p>
@@ -138,6 +132,15 @@ class Shipping extends Component {
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
+          {this.state.value === 'no' ? (
+            <div> Add billing info </div>
+          ) : (
+            <div>
+              <button className="review-button" type="submit">
+                Review Order
+              </button>
+            </div>
+          )}
         </form>
       </div>
     )

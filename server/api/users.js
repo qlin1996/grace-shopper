@@ -33,8 +33,8 @@ router.put('/:userId', (req, res, next) => {
     User.findOne({
       where: {
         id: req.params.userId
-      },
-      include: Order // ??
+      }
+      // include: Order // ??
     })
       .then(user => user.update(req.body))
       .then(user => {

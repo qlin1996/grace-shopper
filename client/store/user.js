@@ -60,7 +60,7 @@ export const logout = () => async dispatch => {
 
 export const updateUser = (id, body) => async dispatch => {
   try {
-    const {data} = await axious.put(`/api/users/${id}`, body)
+    const {data} = await axios.put(`/api/users/${id}`, body)
     dispatch(updateCurrentUser(data))
   } catch (error) {
     console.error(error)

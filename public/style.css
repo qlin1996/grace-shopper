@@ -13,6 +13,15 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
+  font-size: 18px;
+  color: black;
+  text-transform: uppercase;
+  font-family: 'Lucida Console', Monaco, monospace;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+    0 20px 20px rgba(0, 0, 0, 0.15);
 }
 
 form div {
@@ -42,12 +51,13 @@ img {
 
 .auth-forms {
   padding: 35px;
-  border-radius: 5%;
+  border-radius: 2%;
   margin: 35px;
   width: 70%;
   position: absolute;
   top: 40%;
   left: 8.5%;
+  background-color: #f7f5f0;
   font-size: 20px;
 }
 
@@ -110,8 +120,9 @@ select {
   width: 30px;
   height: 29.2px;
   position: absolute;
-  bottom: 5.4%;
+  bottom: -15.4%;
   border-bottom: solid 2px black;
+  border-right: solid 2px black;
   border-top: solid 2px gray;
   left: 54%;
 }
@@ -119,11 +130,12 @@ select {
 .google-logo2 {
   width: 30px;
   height: 30px;
-  position: absolute;
-  bottom: 28.83%;
-  border-bottom: solid 2px black;
-  border-top: solid 2px gray;
+  position: relative;
+  top: -80px;
   left: 48%;
+  border-bottom: solid 2px black;
+  border-right: solid 2px black;
+  border-top: solid 2px gray;
 }
 
 .error-message {
@@ -171,10 +183,12 @@ select {
   padding: 35px;
   margin: 35px;
   width: 70%;
+  border-radius: 2%;
   position: absolute;
   top: 40%;
   left: 8.5%;
   font-size: 20px;
+  background-color: #f7f5f0;
 }
 
 .review-button {
@@ -183,5 +197,88 @@ select {
   background-color: white;
   position: absolute;
   left: 78%;
-  bottom: -25%;
+  bottom: 7%;
+}
+
+.individual-product {
+  padding: 20px;
+  margin: 10px;
+  width: 50%;
+  position: relative;
+  left: 20%;
+  background-color: #f7f5f0;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  border-radius: 3%;
+  text-align: center;
+  font-family: 'Lucida Console', Monaco, monospace;
+}
+
+.text-effects {
+  font-family: 'Lucida Console', Monaco, monospace;
+  color: black;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+    0 20px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* CSS FOR ABOUT US PAGE */
+
+.who-we-are {
+  padding: 50px;
+  margin: 50px;
+  line-height: 1.5em;
+  background-color: #f7f5f0;
+  border-radius: 1%;
+}
+.about-us-div {
+  padding: 12px;
+  margin: 12px;
+  background-color: #f7f5f0;
+  line-height: 1.5em;
+  border-radius: 3%;
+}
+
+.main-about-text {
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  left: 70%;
+  margin: 10px;
+  transform: translate(-50%, -50%);
+  font-size: 75px;
+  letter-spacing: 0.1em;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+  text-shadow: 8px 8px black, 20px 20px white;
+}
+.founder-names {
+  margin: 50px auto;
+  position: relative;
+  font-size: 40px;
+  margin-top: 0;
+
+  font-family: 'Myriad Pro', 'Myriad', helvetica, arial, sans-serif;
+  text-shadow: 2px 3px 3px #292929;
+  letter-spacing: 3px;
+  -webkit-text-stroke: 1px white;
+}
+
+.who-we-are-div {
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  left: 50%;
+  margin: 10px;
+  transform: translate(-50%, -50%);
+  font-size: 75px;
+  letter-spacing: 0.1em;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+  text-shadow: 8px 8px black, 20px 20px white;
+  text-align: center;
+  padding: 20px;
 }
