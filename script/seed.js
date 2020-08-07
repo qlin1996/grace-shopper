@@ -33,12 +33,29 @@ const users = [
     shippingCity: 'nyc',
     shippingState: 'new york',
     shippingZipCode: 11234
+  },
+  {
+    firstName: 'marco',
+    lastName: 'polo',
+    email: 'polomarc@gmail.com',
+    password: 'bjcsdubvibjv',
+    billingStreetAddress: '23 something',
+    billingCity: 'nyc',
+    billingState: 'new york',
+    billingZipCode: 11234,
+    shippingStreetAddress: '23 something',
+    shippingCity: 'nyc',
+    shippingState: 'new york',
+    shippingZipCode: 11234
   }
 ]
 
 const orders = [
   {
     userId: 1
+  },
+  {
+    userId: 2
   }
 ]
 
@@ -48,6 +65,12 @@ const orderitems = [
     price: 799,
     productId: 1,
     orderId: 1
+  },
+  {
+    quantity: 4,
+    price: 799,
+    productId: 2,
+    orderId: 2
   }
 ]
 

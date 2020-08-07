@@ -2,6 +2,7 @@ const router = require('express').Router()
 const OrderItem = require('../db/models/order-item')
 const Order = require('../db/models/order')
 const Product = require('../db/models/product')
+
 router.post('/', async (req, res, next) => {
   try {
     // req.body.productId, req.body.orderId
@@ -18,6 +19,29 @@ router.post('/', async (req, res, next) => {
     })
     await misteriousItem[0].update(req.body)
     res.json(misteriousItem).status(200)
+  } catch (error) {
+    next(error)
+  }
+})
+
+// router.get('/:orderId/product/:productId', async (req, res, next) => {
+//   try {
+//     const order = await OrderItem.findOne({
+//       where: {
+//         orderId: req.params.orderId,
+//         productId: req.params.productId,
+//       },
+//     })
+//     res.json(order)
+//   } catch (error) {
+//     next(error)
+//   }
+// })
+
+router.get('/', async (req, res, next) => {
+  try {
+    const order = await Order.findAll({include: {all: true}})
+    res.json(order)
   } catch (error) {
     next(error)
   }

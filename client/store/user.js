@@ -34,7 +34,7 @@ export const getUserInfo = userId => async dispatch => {
 
 export const me = () => async dispatch => {
   try {
-    // const res = await axios.get('/auth/me')
+    //const res = await axios.get('/auth/me')
     if (res.data) {
       dispatch(getUser(res.data))
     } else {
