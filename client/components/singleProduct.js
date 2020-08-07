@@ -32,7 +32,7 @@ class Product extends Component {
     const product = this.props.product
     console.log(this.props.product)
     return (
-      <div>
+      <div className="individual-product">
         <h1> Name: {product.name}</h1>
         <img src={product.imageUrl} />
         <h3> Price: {product.price}</h3>

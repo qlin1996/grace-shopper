@@ -39,8 +39,8 @@ img {
 }
 
 .nav-logo {
-  width: 430px;
-  height: 132px;
+  width: 390px;
+  height: 125px;
 }
 .icon-logo {
   width: 160px;
@@ -312,12 +312,15 @@ select {
   margin: 10px;
   padding: 10px;
   background-color: white;
-  position: relative;
-  top: 20%;
+  position: absolute;
+  bottom: -25%;
+  left: 80%;
 }
 
 .checkout-billing-header {
   font-size: 22px;
+  position: relative;
+  left: -3.5%;
   letter-spacing: 1px;
   font-family: 'Times New Roman', Times, serif;
   color: black;
