@@ -30,7 +30,6 @@ class Product extends Component {
   }
   render() {
     const product = this.props.product
-    console.log(this.props.product)
     return (
       <div className="individual-product">
         <h1 className="text-effects"> Name: {product.name}</h1>
