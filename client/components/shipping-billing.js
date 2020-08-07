@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {updateUser} from '../store/products'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 class Shipping extends Component {
   constructor() {
@@ -136,9 +137,11 @@ class Shipping extends Component {
             <div> Add billing info </div>
           ) : (
             <div>
-              <button className="review-button" type="submit">
-                Review Order
-              </button>
+              <Link to="/review-order">
+                <button className="review-button" type="submit">
+                  Review Order
+                </button>
+              </Link>
             </div>
           )}
         </form>
