@@ -39,8 +39,8 @@ img {
 }
 
 .nav-logo {
-  width: 430px;
-  height: 132px;
+  width: 390px;
+  height: 125px;
 }
 .icon-logo {
   width: 160px;
@@ -120,11 +120,11 @@ select {
   width: 30px;
   height: 29.2px;
   position: absolute;
-  bottom: -15.4%;
+  bottom: 5.4%;
   border-bottom: solid 2px black;
   border-right: solid 2px black;
   border-top: solid 2px gray;
-  left: 54%;
+  left: 52%;
 }
 
 .google-logo2 {
@@ -132,7 +132,7 @@ select {
   height: 30px;
   position: relative;
   top: -80px;
-  left: 48%;
+  left: 44%;
   border-bottom: solid 2px black;
   border-right: solid 2px black;
   border-top: solid 2px gray;
@@ -197,7 +197,6 @@ select {
   background-color: white;
   position: absolute;
   left: 78%;
-  bottom: 7%;
 }
 
 .individual-product {
@@ -231,12 +230,14 @@ select {
   padding: 50px;
   margin: 50px;
   line-height: 1.5em;
-  background-color: #f7f5f0;
+  background-color: hsl(43, 30%, 95%);
   border-radius: 1%;
 }
 .about-us-div {
   padding: 12px;
   margin: 12px;
+  position: relative;
+  left: 0.3%;
   background-color: #f7f5f0;
   line-height: 1.5em;
   border-radius: 3%;
@@ -245,7 +246,7 @@ select {
 .main-about-text {
   font-family: 'Montserrat', sans-serif;
   position: relative;
-  left: 70%;
+  left: 75.5%;
   margin: 10px;
   transform: translate(-50%, -50%);
   font-size: 75px;
@@ -260,7 +261,6 @@ select {
   position: relative;
   font-size: 40px;
   margin-top: 0;
-
   font-family: 'Myriad Pro', 'Myriad', helvetica, arial, sans-serif;
   text-shadow: 2px 3px 3px #292929;
   letter-spacing: 3px;
@@ -270,7 +270,7 @@ select {
 .who-we-are-div {
   font-family: 'Montserrat', sans-serif;
   position: relative;
-  left: 50%;
+  left: 50.5%;
   margin: 10px;
   transform: translate(-50%, -50%);
   font-size: 75px;
@@ -281,4 +281,47 @@ select {
   text-shadow: 8px 8px black, 20px 20px white;
   text-align: center;
   padding: 20px;
+}
+
+/* CSS FOR SHIPPING & BILLING PAGE */
+.yes-no-shipping {
+  padding: 35px;
+  margin: 35px;
+  width: 70%;
+  border-radius: 2%;
+  position: absolute;
+  top: 70%;
+  left: 8.5%;
+  font-size: 20px;
+  background-color: #f7f5f0;
+}
+
+.billing-info-form {
+  padding: 35px;
+  margin: 35px;
+  width: 93.5%;
+  border-radius: 2%;
+  position: relative;
+  top: 80%;
+  left: -3.5%;
+  font-size: 20px;
+  background-color: #f7f5f0;
+}
+
+.review-button-2 {
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  position: absolute;
+  bottom: -25%;
+  left: 80%;
+}
+
+.checkout-billing-header {
+  font-size: 22px;
+  position: relative;
+  left: -3.5%;
+  letter-spacing: 1px;
+  font-family: 'Times New Roman', Times, serif;
+  color: black;
 }
