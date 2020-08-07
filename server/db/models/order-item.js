@@ -11,7 +11,7 @@ const OrderItem = db.define('orderItem', {
   },
   price: {
     type: Sequelize.INTEGER,
-    allowNull: false,
+    defaultValue: 100,
     validate: {
       isNumeric: true,
       min: 1
@@ -20,11 +20,6 @@ const OrderItem = db.define('orderItem', {
       return this.getDataValue('price') / 100
     }
   }
-  // hooks: {
-  //   beforeSave() {
-  //     price = parseFloat(price)
-  //   },
-  // },
 })
 
 module.exports = OrderItem
