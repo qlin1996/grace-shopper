@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {updateUser} from '../store/products'
+import {updateUser} from '../store/user'
 import {connect} from 'react-redux'
 
 class Shipping extends Component {

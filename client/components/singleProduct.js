@@ -33,11 +33,14 @@ class Product extends Component {
     console.log(this.props.product)
     return (
       <div className="individual-product">
-        <h1> Name: {product.name}</h1>
+        <h1 className="text-effects"> Name: {product.name}</h1>
         <img src={product.imageUrl} />
-        <h3> Price: {product.price}</h3>
-        <p> Description: {product.description}</p>
-        <label htmlFor="Quantity">Quantity</label>
+        <h3 className="text-effects"> Price: {product.price}</h3>
+        <p className="text-effects"> Description: {product.description}</p>
+        <label htmlFor="Quantity" className="text-effects">
+          Quantity
+        </label>
+        <br />
         <input
           type="number"
           name="quantity"
