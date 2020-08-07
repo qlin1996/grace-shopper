@@ -23,10 +23,23 @@ const updateCurrentUser = user => ({type: UPDATE_CURRENT_USER, user})
 /**
  * THUNK CREATORS
  */
+export const getUserInfo = userId => async dispatch => {
+  try {
+    const res = await axios.get(`api/users/${userId}`)
+    dispatch(getUser(res.data || defaultUser))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 export const me = () => async dispatch => {
   try {
-    const res = await axios.get('/auth/me')
-    dispatch(getUser(res.data || defaultUser))
+    // const res = await axios.get('/auth/me')
+    if (res.data) {
+      dispatch(getUser(res.data))
+    } else {
+      return
+    }
   } catch (err) {
     console.error(err)
   }
