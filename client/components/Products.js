@@ -17,6 +17,10 @@ class Products extends Component {
                 <h1 className="text-effects"> Name: {product.name}</h1>
                 <img src={product.imageUrl} />
                 <h3 className="text-effects"> Price: {product.price}</h3>
+                <h3 className="text-effects">
+                  {' '}
+                  Device Type: {product.category}
+                </h3>
               </Link>
             </div>
           )

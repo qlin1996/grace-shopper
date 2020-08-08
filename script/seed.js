@@ -8,14 +8,65 @@ const products = [
     name: 'head & shoulders',
     description: 'good for your hair',
     price: 799,
-    quantity: 10
+    quantity: 10,
+    category: 'Phone'
   },
   {name: 'axe', description: 'you will smell good', price: 599, quantity: 10},
   {
     name: 'cantu',
     description: 'good for your hair',
     price: 1099,
-    quantity: 10
+    quantity: 10,
+    category: 'Computer'
+  },
+  {
+    name: 'Tablet',
+    description: 'good for your hair',
+    price: 1099,
+    quantity: 10,
+    category: 'Tablet'
+  },
+  {
+    name: 'Tablet Mini',
+    description: 'good for your hair',
+    price: 1111,
+    quantity: 10,
+    category: 'Tablet'
+  },
+  {
+    name: 'CRT TV ',
+    description: 'good for your hair',
+    price: 1099,
+    quantity: 10,
+    category: 'TV'
+  },
+  {
+    name: 'OLed',
+    description: 'good for your hair',
+    price: 1099,
+    quantity: 10,
+    category: 'TV'
+  },
+  {
+    name: 'Plasma',
+    description: 'good for your hair',
+    price: 1099,
+    quantity: 10,
+    category: 'TV'
+  },
+  {
+    name: 'Juke',
+    description: 'good for your hair',
+    price: 1099,
+    quantity: 10,
+    category: 'Phone'
+  },
+  {
+    name: 'Google Pixel',
+    description: 'good for your hair',
+    price: 1099,
+    quantity: 10,
+    category: 'Phone'
   }
 ]
 

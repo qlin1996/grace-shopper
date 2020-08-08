@@ -37,6 +37,7 @@ class Product extends Component {
         <img src={product.imageUrl} />
         <h3 className="text-effects"> Price: {product.price}</h3>
         <p className="text-effects"> Description: {product.description}</p>
+        <h3 className="text-effects"> Device Type: {product.category}</h3>
         <label htmlFor="Quantity" className="text-effects">
           Quantity
         </label>
