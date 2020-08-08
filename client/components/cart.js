@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {postToCart} from '../store/shoppingCart'
+import {getAllOrders} from '../store/orders'
 class Cart extends Component {
   constructor() {
     super()
@@ -69,11 +69,11 @@ class Cart extends Component {
 }
 
 const mapToState = state => ({
-  cart: state.cart
+  cart: state.orders
 })
 const mapDispatch = dispatch => ({
   getItems: () => {
-    return dispatch(postToCart())
+    return dispatch(getAllOrders())
   }
 })
 export default connect(mapToState, mapDispatch)(Cart)
