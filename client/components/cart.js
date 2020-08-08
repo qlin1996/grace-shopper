@@ -25,7 +25,7 @@ class Cart extends Component {
     })
   }
   render() {
-    // console.log('THIS IS THE CART THAT IS GIVING US  PROBLEMS', this.props.cart)
+    console.log('THIS IS THE CART THAT IS GIVING US PROBLEMS', this.props.cart)
     const carts = this.props.cart || []
     return (
       <div>
