@@ -1,12 +1,10 @@
 const router = require('express').Router()
-const OrderItem = require('../db/models/order-item')
 const Order = require('../db/models/order')
-const Product = require('../db/models/product')
 
-router.get('/', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
-    const order = await Order.findAll()
-    res.json(order).status(200)
+    const order = await Order.create(req.body)
+    res.status(200).json(order)
   } catch (error) {
     next(error)
   }

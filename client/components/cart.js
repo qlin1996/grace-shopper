@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {getAllOrders} from '../store/orders'
+import {getCartItems} from '../store/shoppingCart'
 class Cart extends Component {
   constructor() {
     super()
@@ -12,7 +12,8 @@ class Cart extends Component {
     this.plus = this.plus.bind(this)
   }
   componentDidMount() {
-    this.props.getItems()
+    // ORDERID IS HARDCODED RN. NEED TO PASS DOWN AND REPLACE.
+    this.props.getItems(1)
   }
   minus() {
     this.setState({
@@ -26,36 +27,32 @@ class Cart extends Component {
   }
   render() {
     console.log('THIS IS THE CART THAT IS GIVING US PROBLEMS', this.props.cart)
-    const carts = this.props.cart || []
+
+    const products = this.props.cart.products || []
     return (
       <div>
         <h1>Cart</h1>
-        {carts.map(cart => {
+
+        {products.map(product => {
           return (
-            <div key={cart.id}>
-              {cart.products.map(product => {
-                return (
-                  <div key={product.id} className="individual-product">
-                    <h1> Name: {product.name}</h1>
-                    <img src={product.imageUrl} />
-                    <h3> Price: {product.price}</h3>
-                    <div className="input-group plus-minus-input">
-                      <div className="input-group-button">
-                        <button type="button" onClick={this.minus}>
-                          -
-                        </button>
-                      </div>
-                      <h3> Quantity: {product.orderItem.quantity}</h3>
-                      <div className="input-group-button">
-                        <button type="button" onChange={this.plus}>
-                          +
-                        </button>
-                      </div>
-                    </div>
-                    <p> Total: {product.price * product.orderItem.quantity}</p>
-                  </div>
-                )
-              })}
+            <div key={product.id} className="individual-product">
+              <h1> Name: {product.name}</h1>
+              <img src={product.imageUrl} />
+              <h3> Price: {product.price}</h3>
+              <div className="input-group plus-minus-input">
+                <div className="input-group-button">
+                  <button type="button" onClick={this.minus}>
+                    -
+                  </button>
+                </div>
+                <h3> Quantity: {product.quantity}</h3>
+                <div className="input-group-button">
+                  <button type="button" onChange={this.plus}>
+                    +
+                  </button>
+                </div>
+              </div>
+              <p> Total: {product.price * product.quantity}</p>
             </div>
           )
         })}
@@ -69,11 +66,11 @@ class Cart extends Component {
 }
 
 const mapToState = state => ({
-  cart: state.orders
+  cart: state.cart
 })
 const mapDispatch = dispatch => ({
-  getItems: () => {
-    return dispatch(getAllOrders())
+  getItems: orderId => {
+    return dispatch(getCartItems(orderId))
   }
 })
 export default connect(mapToState, mapDispatch)(Cart)

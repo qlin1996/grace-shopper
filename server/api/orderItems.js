@@ -38,6 +38,7 @@ router.post('/', async (req, res, next) => {
 //   }
 // })
 
+// for admin so they can see all orders
 router.get('/', async (req, res, next) => {
   try {
     const order = await Order.findAll({include: {all: true}})
