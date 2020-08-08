@@ -23,7 +23,7 @@ class Product extends Component {
     event.preventDefault()
     this.props.addItem({
       price: this.props.product.price * 100,
-      quantity: 1,
+      quantity: this.state.quantity,
       productId: this.props.product.id,
       orderId: 1
     })

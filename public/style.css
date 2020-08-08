@@ -326,6 +326,13 @@ select {
   color: black;
 }
 
+
+.plus-minus-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 /* CSS FOR USER HOME */
 
 .sidebar-buttons-div {
