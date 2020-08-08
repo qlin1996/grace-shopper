@@ -8,7 +8,7 @@ class Cart extends Component {
   }
   render() {
     console.log('THIS IS THE CART THAT IS GIVING US  PROBLEMS', this.props.cart)
-    const carts = this.props.cart
+    const carts = this.props.cart || []
     return (
       <div>
         <h1>Cart</h1>
@@ -19,6 +19,7 @@ class Cart extends Component {
                 return (
                   <div key={product.id}>
                     <h1>{product.name}</h1>
+                    <img src={product.imageUrl} />
                     <h3>{product.price}</h3>
                   </div>
                 )
