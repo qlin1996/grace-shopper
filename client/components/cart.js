@@ -16,6 +16,15 @@ class Cart extends Component {
     this.props.getItems(1)
   }
   minus() {
+    this.props.cart.map(car => {
+      return (
+        <div>
+          {car.product.map(item => {
+            return console.log(item)
+          })}
+        </div>
+      )
+    })
     this.setState({
       clicks: this.state.clicks - 1
     })
@@ -53,7 +62,30 @@ class Cart extends Component {
                 </div>
               </div>
               <p> Total: {product.price * product.quantity}</p>
-            </div>
+      
+//             <div key={cart.id}>
+//               {cart.products.map(product => {
+//                 return (
+//                   <div key={product.id} className="individual-product">
+//                     <h1> Name: {product.name}</h1>
+//                     <img src={product.imageUrl} />
+//                     <h3> Price: {product.price}</h3>
+//                     <div className="input-group plus-minus-input">
+//                       <div className="input-group-button">
+//                         <button type="button" onClick={this.minus}>
+//                           -
+//                         </button>
+//                       </div>
+//                       <h3> Quantity: {product.orderItem.quantity}</h3>
+//                       <div className="input-group-button">
+//                         <button type="button">+</button>
+//                       </div>
+//                     </div>
+//                     <p> Total: {product.price * product.orderItem.quantity}</p>
+//                   </div>
+//                 )
+//               })}
+//             </div>
           )
         })}
 
