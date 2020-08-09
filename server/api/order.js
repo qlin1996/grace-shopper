@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Order = require('../db/models/order')
+const {User} = require('../db/models')
 
 //proctection A.K.A. isAdmin
 const isAdmin = (req, res, next) => {
@@ -20,9 +21,9 @@ router.get('/', isAdmin, async (req, res, next) => {
     next(error)
   }
 })
-  
+
 router.post('/', async (req, res, next) => {
-    try {
+  try {
     const order = await Order.create(req.body)
     res.status(200).json(order)
   } catch (error) {
