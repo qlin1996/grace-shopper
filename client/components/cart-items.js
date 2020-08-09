@@ -14,7 +14,6 @@ class CartItem extends Component {
   }
 
   minus() {
-    console.log('Minus')
     this.setState(prevState => ({
       quantity: prevState.quantity - 1
     }))
@@ -25,7 +24,6 @@ class CartItem extends Component {
     )
   }
   plus() {
-    console.log('Minus')
     this.setState(prevState => ({
       quantity: prevState.quantity + 1
     }))
@@ -37,8 +35,6 @@ class CartItem extends Component {
   }
 
   render() {
-    console.log('STATE', this.state)
-    console.log('PROPS', this.props.product)
     return (
       <div className="individual-product">
         <h1> Name: {this.props.product.name}</h1>

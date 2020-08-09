@@ -22,6 +22,7 @@ export const editItem = items => ({
 export const addToCart = item => async dispatch => {
   try {
     const {data} = await axios.post('/api/orderItems', item)
+    console.log('ADD TO CART', data)
     return dispatch(postItem(data))
   } catch (error) {
     console.log(error)
@@ -43,12 +44,10 @@ export const editItemQuantity = (
   quantityObj
 ) => async dispatch => {
   try {
-    console.log(orderId, productId, 'QUANITIY OBJ', quantityObj)
     const {data} = await axios.patch(
       `api/orderItems/${orderId}/product/${productId}`,
       quantityObj
     )
-    console.log('DATA', data)
     dispatch(editItem(data))
   } catch (error) {
     console.error(error)
