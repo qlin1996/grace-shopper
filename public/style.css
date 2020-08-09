@@ -326,7 +326,6 @@ select {
   color: black;
 }
 
-
 .plus-minus-input {
   display: flex;
   align-items: center;
@@ -384,4 +383,8 @@ select {
   left: 100px; /* On mouse-over, make the elements appear as they should */
   color: darkblue;
   background-color: #feffe0;
+}
+
+@-ms-viewport {
+  width: device-width;
 }
