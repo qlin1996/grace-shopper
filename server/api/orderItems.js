@@ -63,4 +63,25 @@ router.get('/:orderId', async (req, res, next) => {
   }
 })
 
+//PATCH --> /api/:orderId/product/:productId
+router.patch('/:orderId/product/:productId', async (req, res, next) => {
+  try {
+    await OrderItem.update(req.body, {
+      where: {
+        orderId: req.params.orderId,
+        productId: req.params.productId
+      }
+    })
+    const order = await Order.findOne({
+      where: {
+        id: req.params.orderId
+      },
+      include: {all: true}
+    })
+    res.json(order)
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router
