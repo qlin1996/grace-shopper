@@ -16,14 +16,8 @@ class Cart extends Component {
     this.props.getItems(1)
   }
   minus() {
-    this.props.cart.map(car => {
-      return (
-        <div>
-          {car.product.map(item => {
-            return console.log(item)
-          })}
-        </div>
-      )
+    this.props.cart.products(item => {
+      return console.log(item)
     })
     this.setState({
       clicks: this.state.clicks - 1
@@ -34,9 +28,9 @@ class Cart extends Component {
       clicks: this.state.clicks - 1
     })
   }
+
   render() {
     console.log('THIS IS THE CART THAT IS GIVING US PROBLEMS', this.props.cart)
-
     const products = this.props.cart.products || []
     return (
       <div>
@@ -62,30 +56,7 @@ class Cart extends Component {
                 </div>
               </div>
               <p> Total: {product.price * product.quantity}</p>
-      
-//             <div key={cart.id}>
-//               {cart.products.map(product => {
-//                 return (
-//                   <div key={product.id} className="individual-product">
-//                     <h1> Name: {product.name}</h1>
-//                     <img src={product.imageUrl} />
-//                     <h3> Price: {product.price}</h3>
-//                     <div className="input-group plus-minus-input">
-//                       <div className="input-group-button">
-//                         <button type="button" onClick={this.minus}>
-//                           -
-//                         </button>
-//                       </div>
-//                       <h3> Quantity: {product.orderItem.quantity}</h3>
-//                       <div className="input-group-button">
-//                         <button type="button">+</button>
-//                       </div>
-//                     </div>
-//                     <p> Total: {product.price * product.orderItem.quantity}</p>
-//                   </div>
-//                 )
-//               })}
-//             </div>
+            </div>
           )
         })}
 
@@ -100,9 +71,11 @@ class Cart extends Component {
 const mapToState = state => ({
   cart: state.cart
 })
+
 const mapDispatch = dispatch => ({
   getItems: orderId => {
     return dispatch(getCartItems(orderId))
   }
 })
+
 export default connect(mapToState, mapDispatch)(Cart)
