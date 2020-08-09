@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import {updateUser} from '../store/user'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-
+import {getUserInfo, updateUser} from '../store/user'
 class Shipping extends Component {
   constructor() {
     super()
@@ -21,6 +20,10 @@ class Shipping extends Component {
     this.handleSelectChange = this.handleSelectChange.bind(this)
     this.handleSelectSubmit = this.handleSelectSubmit.bind(this)
   }
+  componentDidMount() {
+    this.props.getUser(this.props.match.params.userId)
+    console.log(this.props, 'PROS')
+  }
   handleBillingChange(event) {
     this.setState({
       selectValue: event.target.value
@@ -32,8 +35,8 @@ class Shipping extends Component {
     })
   }
   handleSelectSubmit(event) {
-    // this.props.updateUser(event.target.value, this.state)
     console.log(event)
+    this.props.updateUser(event.target.value, this.state)
   }
   render() {
     return (
@@ -481,7 +484,11 @@ class Shipping extends Component {
                 />
               </div>
               <div>
-                <button className="review-button-2" type="submit">
+                <button
+                  className="review-button-2"
+                  type="submit"
+                  onClick={this.handleSelectSubmit}
+                >
                   Review Order
                 </button>
               </div>
@@ -489,7 +496,11 @@ class Shipping extends Component {
           ) : (
             <div>
               <Link to="/review-order">
-                <button className="review-button" type="submit">
+                <button
+                  className="review-button"
+                  type="submit"
+                  onClick={this.handleSelectSubmit}
+                >
                   Review Order
                 </button>
               </Link>
@@ -500,11 +511,19 @@ class Shipping extends Component {
     )
   }
 }
+const mapState = state => {
+  return {
+    user: state.user
+  }
+}
 const mapDispatchToProps = dispatch => {
   return {
     updateUser: (id, updateData) => {
       return dispatch(updateUser(id, updateData))
+    },
+    getUser: () => {
+      return dispatch(getUserInfo())
     }
   }
 }
-export default connect(null, mapDispatchToProps)(Shipping)
+export default connect(mapState, mapDispatchToProps)(Shipping)
