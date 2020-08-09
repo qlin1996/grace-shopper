@@ -16,14 +16,8 @@ class Cart extends Component {
     this.props.getItems(1)
   }
   minus() {
-    this.props.cart.map(car => {
-      return (
-        <div>
-          {car.product.map(item => {
-            return console.log(item)
-          })}
-        </div>
-      )
+    this.props.cart.products(item => {
+      return console.log(item)
     })
     this.setState({
       clicks: this.state.clicks - 1
