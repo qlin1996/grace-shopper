@@ -11,14 +11,15 @@ router.post('/', async (req, res, next) => {
 
     // creates a order_item instance with this information if it does NOT exist
     // UPDATES the existing instance with this new field
-    //order.addProduct(product, {through: {quantity: req.body.quantity}}) // quantity: req.body.quantity
+    // order.addProduct(product, {through: {quantity: req.body.quantity}}) // quantity: req.body.quantity
     // if we update the price use---->>>> price: req.body.price
     // findOrCreate would also work - look up return value
+
     const item = await OrderItem.findOrCreate({
       where: {productId: req.body.productId, orderId: req.body.orderId}
     })
     await item[0].update(req.body)
-    res.json(item).status(200)
+    res.json(item[0]).status(200)
   } catch (error) {
     next(error)
   }
