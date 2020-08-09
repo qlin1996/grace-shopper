@@ -34,6 +34,11 @@ router.get('/', isAdmin, async (req, res, next) => {
 router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId)
+    if (!user) {
+      const err = Error('Credientials not found')
+      err.status = 404
+      return next(err) // or `throw err`
+    }
     res.json(user)
   } catch (error) {
     next(error)
@@ -54,6 +59,16 @@ router.put('/:userId', async (req, res, next) => {
         res.json(user)
       })
       .catch(next)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//POST --> /api.users
+router.post('/', async (req, res, next) => {
+  try {
+    const newUser = await User.create(req.body)
+    res.json(newUser)
   } catch (error) {
     next(error)
   }
