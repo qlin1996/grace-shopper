@@ -2,8 +2,19 @@ const router = require('express').Router()
 const {User, Order} = require('../db/models')
 module.exports = router
 
+//protection A.K.A. isAdmin
+const isAdmin = (req, res, next) => {
+  if (!User.user && !User.isAdmin) {
+    const error = new Error("you can't hack us")
+    res.status(401).send(error)
+    return next(error)
+  } else {
+    next()
+  }
+}
+
 //GET --> /api/users
-router.get('/', async (req, res, next) => {
+router.get('/', isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and email fields - even though
@@ -17,6 +28,8 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// ONLY ALLOW ADMINS AND THAT SPECIFC USER TO GET/EDIT USER FILE
+
 //GET --> /api/users/:userId
 router.get('/:userId', async (req, res, next) => {
   try {
@@ -28,9 +41,9 @@ router.get('/:userId', async (req, res, next) => {
 })
 
 //PUT --> /api/users/:id
-router.put('/:userId', (req, res, next) => {
+router.put('/:userId', async (req, res, next) => {
   try {
-    User.findOne({
+    await User.findOne({
       where: {
         id: req.params.userId
       }
