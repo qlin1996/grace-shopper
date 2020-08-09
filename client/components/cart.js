@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getCartItems} from '../store/shoppingCart'
+
 class Cart extends Component {
   constructor() {
     super()
@@ -41,14 +42,14 @@ class Cart extends Component {
             <div key={product.id} className="individual-product">
               <h1> Name: {product.name}</h1>
               <img src={product.imageUrl} />
-              <h3> Price: {product.price}</h3>
+              <h3> Price: {product.orderItem.price}</h3>
               <div className="input-group plus-minus-input">
                 <div className="input-group-button">
                   <button type="button" onClick={this.minus}>
                     -
                   </button>
                 </div>
-                <h3> Quantity: {product.quantity}</h3>
+                <h3> Quantity: {product.orderItem.quantity}</h3>
                 <div className="input-group-button">
                   <button type="button" onChange={this.plus}>
                     +
