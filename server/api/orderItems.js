@@ -19,7 +19,8 @@ router.post('/', async (req, res, next) => {
       where: {productId: req.body.productId, orderId: req.body.orderId}
     })
     await item[0].update(req.body)
-    res.json(item[0]).status(200)
+    const order = await Order.findAll({include: {all: true}})
+    res.json(order)
   } catch (error) {
     next(error)
   }
