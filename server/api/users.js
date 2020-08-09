@@ -2,7 +2,7 @@ const router = require('express').Router()
 const {User, Order} = require('../db/models')
 module.exports = router
 
-//proctection A.K.A. isAdmin
+//protection A.K.A. isAdmin
 const isAdmin = (req, res, next) => {
   if (!User.user && !User.isAdmin) {
     const error = new Error("you can't hack us")
