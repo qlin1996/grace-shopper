@@ -15,6 +15,15 @@ class Cart extends Component {
     this.props.getItems()
   }
   minus() {
+    this.props.cart.map(car => {
+      return (
+        <div>
+          {car.product.map(item => {
+            return console.log(item)
+          })}
+        </div>
+      )
+    })
     this.setState({
       clicks: this.state.clicks - 1
     })
@@ -47,9 +56,7 @@ class Cart extends Component {
                       </div>
                       <h3> Quantity: {product.orderItem.quantity}</h3>
                       <div className="input-group-button">
-                        <button type="button" onChange={this.plus}>
-                          +
-                        </button>
+                        <button type="button">+</button>
                       </div>
                     </div>
                     <p> Total: {product.price * product.orderItem.quantity}</p>
