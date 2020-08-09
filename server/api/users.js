@@ -28,8 +28,10 @@ router.get('/', isAdmin, async (req, res, next) => {
   }
 })
 
+// ONLY ALLOW ADMINS AND THAT SPECIFC USER TO GET/EDIT USER FILE
+
 //GET --> /api/users/:userId
-router.get('/:userId', isAdmin, async (req, res, next) => {
+router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId)
     res.json(user)
@@ -39,7 +41,7 @@ router.get('/:userId', isAdmin, async (req, res, next) => {
 })
 
 //PUT --> /api/users/:id
-router.put('/:userId', isAdmin, async (req, res, next) => {
+router.put('/:userId', async (req, res, next) => {
   try {
     await User.findOne({
       where: {
