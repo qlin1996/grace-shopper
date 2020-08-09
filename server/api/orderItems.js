@@ -3,7 +3,18 @@ const OrderItem = require('../db/models/order-item')
 const Order = require('../db/models/order')
 const Product = require('../db/models/product')
 
-router.post('/', async (req, res, next) => {
+//proctection A.K.A. isAdmin
+const isAdmin = (req, res, next) => {
+  if (!User.user && !User.isAdmin) {
+    const error = new Error("you can't hack us")
+    res.status(401).send(error)
+    return next(error)
+  } else {
+    next()
+  }
+}
+
+router.post('/', isAdmin, async (req, res, next) => {
   try {
     // req.body.productId, req.body.orderId
     const order = Order.findByPk(req.body.orderId)
@@ -38,7 +49,7 @@ router.post('/', async (req, res, next) => {
 //   }
 // })
 
-router.get('/', async (req, res, next) => {
+router.get('/', isAdmin, async (req, res, next) => {
   try {
     const order = await Order.findAll({include: {all: true}})
     res.json(order)
