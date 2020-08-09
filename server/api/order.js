@@ -1,7 +1,5 @@
 const router = require('express').Router()
-const OrderItem = require('../db/models/order-item')
 const Order = require('../db/models/order')
-const Product = require('../db/models/product')
 
 //proctection A.K.A. isAdmin
 const isAdmin = (req, res, next) => {
@@ -16,8 +14,17 @@ const isAdmin = (req, res, next) => {
 
 router.get('/', isAdmin, async (req, res, next) => {
   try {
-    const order = await Order.findAll()
-    res.json(order).status(200)
+    const orders = await Order.findAll()
+    res.status(200).json(orders)
+  } catch (error) {
+    next(error)
+  }
+})
+  
+router.post('/', async (req, res, next) => {
+    try {
+    const order = await Order.create(req.body)
+    res.status(200).json(order)
   } catch (error) {
     next(error)
   }

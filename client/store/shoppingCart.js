@@ -22,9 +22,9 @@ export const addToCart = item => async dispatch => {
   }
 }
 
-export const postToCart = items => async dispatch => {
+export const getCartItems = orderId => async dispatch => {
   try {
-    const {data} = await axios.get('/api/orderItems', items)
+    const {data} = await axios.get(`/api/orderItems/${orderId}`)
     return dispatch(getItems(data))
   } catch (error) {
     console.log(error)

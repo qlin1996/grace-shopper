@@ -90,6 +90,14 @@ const User = db.define('user', {
     },
     defaultValue: 'no'
   },
+  isGuest: {
+    type: Sequelize.ENUM('yes', 'no'),
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    },
+    defaultValue: 'no'
+  },
   password: {
     type: Sequelize.STRING,
     allowNull: false,

@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {fetchProducts} from '../store/products'
 import {Link} from 'react-router-dom'
+import getUserInfo from '../store/user.js'
 /**
  * COMPONENT
  */
@@ -31,10 +32,17 @@ class UserHome extends Component {
       if (filter === 'Computers') return product.category === 'Computer'
       if (filter === 'TVs') return product.category === 'TV'
     })
-    const {email} = this.props
+    const user = this.props.user
     return (
       <div>
-        <h3>Welcome, {email}</h3>
+        {user.firstName ? (
+          <h3>
+            Welcome, {user.firstName} {user.lastName}
+          </h3>
+        ) : (
+          <h3>Welcome, guest</h3>
+        )}
+
         <img src="/icon-logo.png" alt="image" className="icon-logo" />
         <div className="sidebar-buttons-div">
           <button
@@ -110,11 +118,12 @@ class UserHome extends Component {
  */
 const mapState = state => {
   return {
-    email: state.user.email,
+    user: state.user,
     products: state.products
   }
 }
 const mapDispatch = dispatch => ({
+  getUser: () => dispatch(getUserInfo()),
   getProducts: () => dispatch(fetchProducts())
 })
 
@@ -123,6 +132,6 @@ export default connect(mapState, mapDispatch)(UserHome)
 /**
  * PROP TYPES
  */
-UserHome.propTypes = {
-  email: PropTypes.string
-}
+// UserHome.propTypes = {
+//   email: PropTypes.string,
+// }
