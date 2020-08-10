@@ -1,3 +1,4 @@
+/* GENERAL CSS */
 body {
   font-family: sans-serif;
 }
@@ -24,6 +25,7 @@ nav a {
     0 20px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* CSS FOR NAVBAR AND LOGO */
 form div {
   margin: 1em;
   display: inline-block;
@@ -49,6 +51,7 @@ img {
   left: 48%;
 }
 
+/* CSS FOR USER LOGIN AND SIGNUP COMPONENTS */
 .auth-forms {
   padding: 35px;
   border-radius: 2%;
@@ -199,6 +202,7 @@ select {
   left: 78%;
 }
 
+/* CSS FOR SINGLE PRODUCT VIEW */
 .individual-product {
   padding: 20px;
   margin: 10px;
@@ -225,7 +229,6 @@ select {
 }
 
 /* CSS FOR ABOUT US PAGE */
-
 .who-we-are {
   padding: 50px;
   margin: 50px;
@@ -385,6 +388,36 @@ select {
   background-color: #feffe0;
 }
 
+/* CSS FOR RESPONSIVENESS */
 @-ms-viewport {
   width: device-width;
+}
+
+/* CSS FOR SHIPPING AND BILLING COMPONENT */
+.save-info-button {
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  position: relative;
+  left: -2%;
+}
+
+.checkout-forms {
+  padding: 35px;
+  margin: 35px;
+  width: 70%;
+  border-radius: 2%;
+  position: absolute;
+  top: 40%;
+  left: 8.5%;
+  font-size: 20px;
+  background-color: #f7f5f0;
+}
+
+.review-button {
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  position: relative;
+  left: 60%;
 }

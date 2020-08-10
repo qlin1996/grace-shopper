@@ -23,8 +23,7 @@ class Shipping extends Component {
     this.handleSelectSubmit = this.handleSelectSubmit.bind(this)
   }
   componentDidMount() {
-    this.props.getUser(this.props.user.userId)
-    console.log('THISP ORPS', this.props)
+    this.props.getUser(this.props.user.id)
   }
   handleBillingChange(event) {
     this.setState({
@@ -50,12 +49,7 @@ class Shipping extends Component {
           {' '}
           Please Enter Shipping <br /> & Billing Information
         </p>
-        <form
-          name={name}
-          className="checkout-forms"
-          value={userId}
-          onClick={this.handleSelectSubmit}
-        >
+        <form name={name} className="checkout-forms">
           <div>
             <label htmlFor="firstName">
               <small>First Name</small>
@@ -290,12 +284,7 @@ class Shipping extends Component {
                 Please Enter Additional Billing Information
               </p>
               <br />
-              <form
-                name={name}
-                className="billing-info-form"
-                value={userId}
-                onClick={this.handleSelectSubmit}
-              >
+              <form name={name} className="billing-info-form">
                 <div>
                   <label htmlFor="billingStreetAddress">
                     <small>Street</small>
@@ -490,27 +479,40 @@ class Shipping extends Component {
                   />
                 </div>
                 <div>
+                  <button
+                    className="save-info-button"
+                    type="submit"
+                    value={userId}
+                    onClick={this.handleSelectSubmit}
+                  >
+                    Ready To Submit Order Info?
+                  </button>
                   <Link to="/review-order">
-                    <button className="review-button-2" type="submit">
+                    <button type="button" className="review-button">
                       Review Order
                     </button>
                   </Link>
-                  {/* <Link to="/review-order">
-                    <button type="button">Review Order</button>
-                  </Link> */}
                 </div>
               </form>
             </div>
           ) : (
             <div>
               <Link to="/review-order">
-                <button className="review-button" type="submit">
+                <button
+                  className="save-info-button"
+                  type="submit"
+                  value={userId}
+                  onClick={this.handleSelectSubmit}
+                >
+                  My Information is Correct
+                </button>
+              </Link>
+
+              <Link to="/review-order">
+                <button type="button" className="review-button">
                   Review Order
                 </button>
               </Link>
-              {/* <Link to="/review-order">
-                <button type="button">Review Order</button>
-              </Link> */}
             </div>
           )}
         </div>
