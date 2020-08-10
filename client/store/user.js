@@ -7,7 +7,7 @@ import history from '../history'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const UPDATE_CURRENT_USER = 'UPDATE_CURRENT_USER'
-
+const ADD_USER = 'ADD_USER'
 /**
  * INITIAL STATE
  */
@@ -25,7 +25,7 @@ const updateCurrentUser = user => ({type: UPDATE_CURRENT_USER, user})
  */
 export const getUserInfo = userId => async dispatch => {
   try {
-    const res = await axios.get(`api/users/${userId}`)
+    // const res = await axios.get(`api/users/${userId}`)
     dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
@@ -34,7 +34,7 @@ export const getUserInfo = userId => async dispatch => {
 
 export const me = () => async dispatch => {
   try {
-    //const res = await axios.get('/auth/me')
+    const res = await axios.get('/auth/me')
     if (res.data) {
       dispatch(getUser(res.data))
     } else {
@@ -45,10 +45,36 @@ export const me = () => async dispatch => {
   }
 }
 
-export const auth = (email, password, method) => async dispatch => {
+export const auth1 = (email, password, method) => async dispatch => {
   let res
   try {
     res = await axios.post(`/auth/${method}`, {email, password})
+  } catch (authError) {
+    return dispatch(getUser({error: authError}))
+  }
+
+  try {
+    dispatch(getUser(res.data))
+    history.push('/home')
+  } catch (dispatchOrHistoryErr) {
+    console.error(dispatchOrHistoryErr)
+  }
+}
+export const auth2 = (
+  email,
+  password,
+  firstName,
+  lastName,
+  method
+) => async dispatch => {
+  let res
+  try {
+    res = await axios.post(`/auth/${method}`, {
+      email,
+      password,
+      firstName,
+      lastName
+    })
   } catch (authError) {
     return dispatch(getUser({error: authError}))
   }
@@ -90,6 +116,8 @@ export default function(state = defaultUser, action) {
       return defaultUser
     case UPDATE_CURRENT_USER:
       return action.user
+    case ADD_USER:
+      return [...state, action.user]
     default:
       return state
   }

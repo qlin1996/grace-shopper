@@ -27,60 +27,28 @@ const User = db.define('user', {
     }
   },
   billingStreetAddress: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.STRING
   },
   billingCity: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.STRING
   },
   billingState: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.STRING
   },
   billingZipCode: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.INTEGER
   },
   shippingStreetAddress: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.STRING
   },
   shippingCity: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.STRING
   },
   shippingState: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.STRING
   },
   shippingZipCode: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.INTEGER
   },
   isAdmin: {
     type: Sequelize.ENUM('yes', 'no'),

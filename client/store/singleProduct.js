@@ -2,10 +2,16 @@ import axios from 'axios'
 const GET_PRODUCT = 'GET_PRODUCT'
 const EDIT_PRODUCT = 'EDIT_PRODUCT'
 const DELETE_PRODUCT = 'DELETE_PRODUCT'
+const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
 
-export const getProduct = id => ({
+export const getProduct = product => ({
   type: GET_PRODUCT,
-  id
+  product
+})
+
+export const updateQuantity = product => ({
+  type: UPDATE_QUANTITY,
+  product
 })
 export const editProduct = (id, newInfo) => ({
   type: EDIT_PRODUCT,
@@ -40,14 +46,28 @@ export const destroyProduct = id => async dispatch => {
     console.log(error)
   }
 }
+
+export const updateQuantityInStock = (
+  id,
+  updatedQuantity
+) => async dispatch => {
+  try {
+    const {data} = await axios.patch(`/api/products/${id}`, updatedQuantity)
+    return dispatch(updateQuantity(data))
+  } catch (error) {
+    console.error(error)
+  }
+}
 export default function productSingleReducer(state = {}, action) {
   switch (action.type) {
     case GET_PRODUCT:
-      return action.id
+      return action.product
     case EDIT_PRODUCT:
       return action.product
     case DELETE_PRODUCT:
       return [...state.filter(product => product.id !== Number(action.id))]
+    case UPDATE_QUANTITY:
+      return action.product
     default:
       return state
   }

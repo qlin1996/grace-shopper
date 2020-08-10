@@ -11,7 +11,7 @@ class Product extends Component {
   constructor() {
     super()
     this.state = {
-      quantity: 0
+      quantity: 1
     }
   }
   componentDidMount() {
