@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import {updateUser} from '../store/user'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-
+import {getUserInfo, updateUser} from '../store/user'
 class Shipping extends Component {
   constructor() {
     super()
@@ -12,14 +11,19 @@ class Shipping extends Component {
       lastName: '',
       shippingStreetAddress: '',
       shippingCity: '',
+      shippingState: '',
       shippingZipCode: '',
       billingStreetAddress: '',
       billingCity: '',
+      billingState: '',
       billingZipCode: ''
     }
     this.handleBillingChange = this.handleBillingChange.bind(this)
     this.handleSelectChange = this.handleSelectChange.bind(this)
     this.handleSelectSubmit = this.handleSelectSubmit.bind(this)
+  }
+  componentDidMount() {
+    this.props.getUser(this.props.user.userId)
   }
   handleBillingChange(event) {
     this.setState({
@@ -32,10 +36,10 @@ class Shipping extends Component {
     })
   }
   handleSelectSubmit(event) {
-    // this.props.updateUser(event.target.value, this.state)
-    console.log(event)
+    this.props.updateUser(event.target.value, this.state)
   }
   render() {
+    const userId = this.props.user.id
     return (
       <div>
         <img src="/icon-logo.png" alt="image" className="icon-logo" /> <br />{' '}
@@ -481,7 +485,11 @@ class Shipping extends Component {
                 />
               </div>
               <div>
-                <button className="review-button-2" type="submit">
+                <button
+                  className="review-button-2"
+                  type="submit"
+                  onClick={this.handleSelectSubmit}
+                >
                   Review Order
                 </button>
               </div>
@@ -489,7 +497,12 @@ class Shipping extends Component {
           ) : (
             <div>
               <Link to="/review-order">
-                <button className="review-button" type="submit">
+                <button
+                  className="review-button"
+                  type="submit"
+                  value={userId}
+                  onClick={this.handleSelectSubmit}
+                >
                   Review Order
                 </button>
               </Link>
@@ -500,11 +513,19 @@ class Shipping extends Component {
     )
   }
 }
+const mapState = state => {
+  return {
+    user: state.user
+  }
+}
 const mapDispatchToProps = dispatch => {
   return {
     updateUser: (id, updateData) => {
       return dispatch(updateUser(id, updateData))
+    },
+    getUser: () => {
+      return dispatch(getUserInfo())
     }
   }
 }
-export default connect(null, mapDispatchToProps)(Shipping)
+export default connect(mapState, mapDispatchToProps)(Shipping)

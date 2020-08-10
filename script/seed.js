@@ -97,7 +97,8 @@ const users = [
     shippingStreetAddress: '23 something',
     shippingCity: 'nyc',
     shippingState: 'new york',
-    shippingZipCode: 11234
+    shippingZipCode: 11234,
+    isGuest: 'no'
   }
 ]
 

@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {fetchProducts} from '../store/products'
+import {me} from '../store/user'
 import {Link} from 'react-router-dom'
-import getUserInfo from '../store/user.js'
 /**
  * COMPONENT
  */
@@ -19,7 +19,6 @@ class UserHome extends Component {
     this.props.getProducts()
   }
   handleClick(event) {
-    console.log(event.target.value, 'EVENT.T.V')
     this.setState({filter: event.target.value})
   }
 
@@ -33,6 +32,7 @@ class UserHome extends Component {
       if (filter === 'TVs') return product.category === 'TV'
     })
     const user = this.props.user
+    const {email} = this.props
     return (
       <div>
         {user.firstName ? (
@@ -40,7 +40,7 @@ class UserHome extends Component {
             Welcome, {user.firstName} {user.lastName}
           </h3>
         ) : (
-          <h3>Welcome, guest</h3>
+          <h3>Welcome, {email}</h3>
         )}
 
         <img src="/icon-logo.png" alt="image" className="icon-logo" />
@@ -118,13 +118,14 @@ class UserHome extends Component {
  */
 const mapState = state => {
   return {
-    user: state.user,
-    products: state.products
+    email: state.user.email,
+    products: state.products,
+    user: state.user
   }
 }
 const mapDispatch = dispatch => ({
-  getUser: () => dispatch(getUserInfo()),
-  getProducts: () => dispatch(fetchProducts())
+  getProducts: () => dispatch(fetchProducts()),
+  me: () => dispatch(me())
 })
 
 export default connect(mapState, mapDispatch)(UserHome)
@@ -132,6 +133,6 @@ export default connect(mapState, mapDispatch)(UserHome)
 /**
  * PROP TYPES
  */
-// UserHome.propTypes = {
-//   email: PropTypes.string,
-// }
+UserHome.propTypes = {
+  email: PropTypes.string
+}
