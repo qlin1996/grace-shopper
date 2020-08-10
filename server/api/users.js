@@ -64,7 +64,7 @@ router.put('/:userId', async (req, res, next) => {
   }
 })
 
-//POST --> /api.users
+//POST --> /api/users
 router.post('/', async (req, res, next) => {
   try {
     const newUser = await User.create(req.body)

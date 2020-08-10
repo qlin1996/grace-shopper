@@ -3,6 +3,7 @@ const OrderItem = require('../db/models/order-item')
 const Order = require('../db/models/order')
 // const Product = require('../db/models/product')
 
+//POST -> /api/order
 router.post('/', async (req, res, next) => {
   try {
     // creates a order_item instance with this information if it does NOT exist
