@@ -35,7 +35,7 @@ const Product = db.define('product', {
       notEmpty: true
     }
   },
-  quantity: {
+  quantityInStock: {
     type: Sequelize.INTEGER,
     allowNull: false,
     validate: {

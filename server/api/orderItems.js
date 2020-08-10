@@ -5,10 +5,6 @@ const Order = require('../db/models/order')
 
 router.post('/', async (req, res, next) => {
   try {
-    // req.body.productId, req.body.orderId
-    // const order = Order.findByPk(req.body.orderId)
-    // const product = Product.findByPk(req.body.productId)
-
     // creates a order_item instance with this information if it does NOT exist
     // UPDATES the existing instance with this new field
     // order.addProduct(product, {through: {quantity: req.body.quantity}}) // quantity: req.body.quantity
@@ -19,7 +15,8 @@ router.post('/', async (req, res, next) => {
       where: {productId: req.body.productId, orderId: req.body.orderId}
     })
     await item[0].update(req.body)
-    res.json(item[0]).status(200)
+    const order = await Order.findAll({include: {all: true}})
+    res.json(order)
   } catch (error) {
     next(error)
   }
@@ -51,6 +48,27 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:orderId', async (req, res, next) => {
   try {
+    const order = await Order.findOne({
+      where: {
+        id: req.params.orderId
+      },
+      include: {all: true}
+    })
+    res.json(order)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//PATCH --> /api/:orderId/product/:productId
+router.patch('/:orderId/product/:productId', async (req, res, next) => {
+  try {
+    await OrderItem.update(req.body, {
+      where: {
+        orderId: req.params.orderId,
+        productId: req.params.productId
+      }
+    })
     const order = await Order.findOne({
       where: {
         id: req.params.orderId
