@@ -20,7 +20,9 @@ class CartItem extends Component {
     this.props.editItemQuantity(
       this.props.product.orderItem.orderId,
       this.props.product.orderItem.productId,
-      {quantity: this.state.quantity - 1}
+      {
+        quantity: this.state.quantity - 1
+      }
     )
   }
   plus() {
@@ -30,7 +32,9 @@ class CartItem extends Component {
     this.props.editItemQuantity(
       this.props.product.orderItem.orderId,
       this.props.product.orderItem.productId,
-      {quantity: this.state.quantity + 1}
+      {
+        quantity: this.state.quantity + 1
+      }
     )
   }
 

@@ -104,6 +104,21 @@ const users = [
     shippingState: 'new york',
     shippingZipCode: 11234,
     isGuest: 'no'
+  },
+  {
+    firstName: 'Simon',
+    lastName: 'Zeng',
+    email: 'zeng.simonl@gmail.com',
+    password: 'bjcsdubvibjv',
+    billingStreetAddress: '23 something',
+    billingCity: 'nyc',
+    billingState: 'new york',
+    billingZipCode: 11234,
+    shippingStreetAddress: '23 something',
+    shippingCity: 'nyc',
+    shippingState: 'new york',
+    shippingZipCode: 11234,
+    isAdmin: 'yes'
   }
 ]
 

@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchSingleProduct} from '../store/singleProduct'
+import {
+  fetchSingleProduct,
+  putProduct,
+  destroyProduct
+} from '../store/singleProduct'
 import {addToCart} from '../store/shoppingCart'
+
 class Product extends Component {
   constructor() {
     super()
@@ -28,6 +33,31 @@ class Product extends Component {
       orderId: 1
     })
   }
+
+  handleDelete = event => {
+    event.preventDefault()
+    this.props.deleteProduct(this.props.match.params.id)
+  }
+
+  handleUpdate = event => {
+    event.preventDefault()
+    const name = event.target.nameOfProduct.value
+    const description = event.target.descriptionOfProduct.value
+    const imageUrl = event.target.imageOfProduct.value
+    const price = event.target.priceOfProduct.value
+    const quantity = event.target.quantityOfProduct.value
+    const category = event.target.categoryOfProduct.value
+    const productId = this.props.match.params.id
+    this.props.updateProduct(productId, {
+      name,
+      description,
+      price,
+      imageUrl,
+      quantity,
+      category
+    })
+  }
+
   render() {
     const product = this.props.product
     return (
@@ -52,6 +82,73 @@ class Product extends Component {
         <button type="submit" onClick={this.handleSubmit}>
           add to cart 🛒
         </button>
+        <div>
+          <button className="remove-product" onClick={this.handleDelete}>
+            Delete {product.name}
+          </button>
+        </div>
+        <div />
+        <div>
+          <h1>Update {product.name}'s Information</h1>
+          <div>
+            <form onSubmit={this.handleUpdate}>
+              <label>
+                Name of Product:
+                <input
+                  type="text"
+                  name="nameOfProduct"
+                  onChange={this.handleChange}
+                />
+              </label>
+
+              <label>
+                Description of Product:
+                <input
+                  type="text"
+                  name="descriptionOfProduct"
+                  onChange={this.handleChange}
+                />
+              </label>
+
+              <label>
+                Price of Product:
+                <input
+                  type="text"
+                  name="priceOfProduct"
+                  onChange={this.handleChange}
+                />
+              </label>
+
+              <label>
+                Image of Product:
+                <input
+                  type="text"
+                  name="imageOfProduct"
+                  onChange={this.handleChange}
+                />
+              </label>
+
+              <label>
+                Quantity of Product:
+                <input
+                  type="text"
+                  name="quantityOfProduct"
+                  onChange={this.handleChange}
+                />
+              </label>
+
+              <label>
+                Category of Product:
+                <input
+                  type="text"
+                  name="categoryOfProduct"
+                  onChange={this.handleChange}
+                />
+              </label>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
     )
   }
@@ -63,7 +160,9 @@ const mapToState = state => ({
 
 const mapDispatch = dispatch => ({
   getProduct: id => dispatch(fetchSingleProduct(id)),
-  addItem: item => dispatch(addToCart(item))
+  addItem: item => dispatch(addToCart(item)),
+  updateProduct: (id, newInfo) => dispatch(putProduct(id, newInfo)),
+  deleteProduct: id => dispatch(destroyProduct(id))
 })
 
 export default connect(mapToState, mapDispatch)(Product)
