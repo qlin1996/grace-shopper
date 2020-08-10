@@ -25,6 +25,15 @@ class Cart extends Component {
           )
         })}
 
+        <h3>
+          Cart's Total: $
+          {products.reduce(
+            (accum, currentVal) =>
+              accum + currentVal.price * 100 * currentVal.orderItem.quantity,
+            0
+          ) / 100}
+        </h3>
+
         <Link to="./shipping-billing">
           <button type="button">Checkout</button>
         </Link>

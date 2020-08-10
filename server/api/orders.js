@@ -41,8 +41,8 @@ router.patch('/:id', async (req, res, next) => {
         id: req.params.id
       }
     })
-    const orderFulfilled = await Order.findByPk(req.params.id)
-    res.json(orderFulfilled)
+    const orderSubmitted = await Order.findByPk(req.params.id)
+    res.json(orderSubmitted)
   } catch (error) {
     next(error)
   }

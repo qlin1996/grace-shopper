@@ -1,16 +1,16 @@
 import axios from 'axios'
 
-const FULFILL_ORDER = 'FULFILL_ORDER'
+const UPDATED_ORDER = 'UPDATED_ORDER'
 
-export const fulfilledOrder = order => ({
-  type: FULFILL_ORDER,
+export const updatedOrder = order => ({
+  type: UPDATED_ORDER,
   order
 })
 
-export const fulfillOrder = (id, isFulFilled) => async dispatch => {
+export const submitOrderAndUpdate = (id, updatedOrderObj) => async dispatch => {
   try {
-    const {data} = await axios.patch(`/api/orders/${id}`, isFulFilled)
-    return dispatch(fulfilledOrder(data))
+    const {data} = await axios.patch(`/api/orders/${id}`, updatedOrderObj)
+    return dispatch(updatedOrder(data))
   } catch (error) {
     console.error(error)
   }
@@ -18,7 +18,7 @@ export const fulfillOrder = (id, isFulFilled) => async dispatch => {
 
 export default function orderReducer(state = {}, action) {
   switch (action.type) {
-    case FULFILL_ORDER:
+    case UPDATED_ORDER:
       return action.order
     default:
       return state

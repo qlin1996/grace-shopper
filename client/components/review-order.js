@@ -4,7 +4,7 @@ import {getUserInfo} from '../store/user'
 import {Link} from 'react-router-dom'
 import {updateQuantityInStock} from '../store/singleProduct'
 import {getCartItems} from '../store/shoppingCart'
-import {fulfillOrder} from '../store/order'
+import {submitOrderAndUpdate} from '../store/order'
 
 class ReviewOrder extends Component {
   componentDidMount() {
@@ -19,17 +19,29 @@ class ReviewOrder extends Component {
       const qtyObj = {
         quantityInStock: product.quantityInStock - product.orderItem.quantity
       }
-      console.log(qtyObj)
       this.props.updateQuantityInStock(product.id, qtyObj)
     })
+    const totalInInteger = this.props.cart.products.reduce(
+      (accum, currentVal) =>
+        accum + currentVal.price * 100 * currentVal.orderItem.quantity,
+      0
+    )
     // ORDER ID HARD CODED
-    this.props.fulfillOrder(1, {isFulfilled: 'yes'})
+    this.props.submitOrderAndUpdate(1, {
+      isFulfilled: 'yes',
+      totalPrice: totalInInteger
+    })
   }
 
   render() {
     const user = this.props.user
     console.log('USER', user)
     const products = this.props.cart.products || []
+    const totalInInteger = products.reduce(
+      (accum, currentVal) =>
+        accum + currentVal.price * 100 * currentVal.orderItem.quantity,
+      0
+    )
     return (
       <div>
         <h1>Review Order</h1>
@@ -59,6 +71,8 @@ class ReviewOrder extends Component {
           )
         })}
 
+        <h3>Cart's Total: ${totalInInteger / 100}</h3>
+
         <Link to="./order-submitted">
           <button type="button" onClick={this.handleClick}>
             Submit Order
@@ -79,7 +93,8 @@ const mapToDispatch = dispatch => ({
   getItems: orderId => dispatch(getCartItems(orderId)),
   updateQuantityInStock: (id, updatedQuantity) =>
     dispatch(updateQuantityInStock(id, updatedQuantity)),
-  fulfillOrder: (id, isFulfilled) => dispatch(fulfillOrder(id, isFulfilled))
+  submitOrderAndUpdate: (id, updatedOrderObj) =>
+    dispatch(submitOrderAndUpdate(id, updatedOrderObj))
 })
 
 export default connect(mapToState, mapToDispatch)(ReviewOrder)
