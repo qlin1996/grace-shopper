@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchProducts} from '../store/products'
 import {Link} from 'react-router-dom'
+import getUserInfo from '../store/user.js'
 
 class Products extends Component {
   componentDidMount() {
@@ -29,6 +30,9 @@ class Products extends Component {
     )
   }
 }
+
+// If the user is an admin, need to render the button that will say "Add a New Product"
+// and make sure that it links to the newProduct component
 
 const mapToState = state => ({
   products: state.products

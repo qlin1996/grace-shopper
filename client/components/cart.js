@@ -56,7 +56,7 @@ class Cart extends Component {
                   </button>
                 </div>
               </div>
-              <p> Total: {product.price * product.quantity}</p>
+              <p> Total: {product.price * product.orderItem.quantity}</p>
             </div>
           )
         })}

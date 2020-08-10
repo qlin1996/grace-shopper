@@ -22,7 +22,7 @@ router.get('/', isAdmin, async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', isAdmin, async (req, res, next) => {
   try {
     const order = await Order.create(req.body)
     res.status(200).json(order)
