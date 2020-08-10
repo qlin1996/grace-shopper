@@ -9,7 +9,8 @@ import {
   About,
   Shipping,
   ReviewOrder,
-  OrderSubmitted
+  OrderSubmitted,
+  NewProduct
 } from './components'
 import {me} from './store'
 import Products from './components/Products'
@@ -39,6 +40,8 @@ class Routes extends Component {
         <Route exact path="/shipping-billing" component={Shipping} />
         <Route exact path="/review-order" component={ReviewOrder} />
         <Route exact path="/order-submitted" component={OrderSubmitted} />
+        <Route exact path="/new-product" component={NewProduct} />
+
         <Route path="/home" component={UserHome} />
         {isLoggedIn && (
           <Switch>
