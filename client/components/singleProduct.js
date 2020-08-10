@@ -59,6 +59,11 @@ class Product extends Component {
   }
 
   render() {
+    console.log('this.state.quantity', this.state.quantity)
+    console.log(
+      'this.props.product.quantityInStock',
+      this.props.product.quantityInStock
+    )
     const product = this.props.product
     return (
       <div className="individual-product">
@@ -74,16 +79,21 @@ class Product extends Component {
         <input
           type="number"
           name="quantity"
-          max="10"
-          min="0"
+          max={this.props.product.quantityInStock}
+          min="1"
           value={this.state.quantity}
           onChange={this.handleChange}
         />
         <button type="submit" onClick={this.handleSubmit}>
           add to cart 🛒
         </button>
+
         <div>
-          <button className="remove-product" onClick={this.handleDelete}>
+          <button
+            type="submit"
+            className="remove-product"
+            onClick={this.handleDelete}
+          >
             Delete {product.name}
           </button>
         </div>

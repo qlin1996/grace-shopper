@@ -34,9 +34,11 @@ class Cart extends Component {
           ) / 100}
         </h3>
 
-        <Link to="./shipping-billing">
-          <button type="button">Checkout</button>
-        </Link>
+        {products && (
+          <Link to="./shipping-billing">
+            <button type="button">Checkout</button>
+          </Link>
+        )}
       </div>
     )
   }

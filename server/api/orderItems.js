@@ -81,4 +81,27 @@ router.patch('/:orderId/product/:productId', async (req, res, next) => {
   }
 })
 
+//DELETE --> /api/:orderId/product/:productId
+router.delete('/:orderId/product/:productId', async (req, res, next) => {
+  try {
+    const orderItem = await OrderItem.findOne({
+      where: {
+        orderId: req.params.orderId,
+        productId: req.params.productId
+      }
+    })
+    await orderItem.destroy()
+
+    const order = await Order.findOne({
+      where: {
+        id: req.params.orderId
+      },
+      include: {all: true}
+    })
+    res.json(order)
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router
