@@ -81,21 +81,9 @@ class CartItem extends Component {
               <div>
                 <div className="input-group plus-minus-input">
                   <div className="input-group-button">
-                    {this.state.quantity === 1 ? (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          this.minus()
-                          this.handleDelete()
-                        }}
-                      >
-                        -
-                      </button>
-                    ) : (
-                      <button type="button" onClick={this.minus()}>
-                        -
-                      </button>
-                    )}
+                    <button type="button" onClick={this.minus}>
+                      -
+                    </button>
                   </div>
                   <h3> Quantity: {this.state.quantity}</h3>
                   <div className="input-group-button">
