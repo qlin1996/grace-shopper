@@ -5,10 +5,6 @@ const Order = require('../db/models/order')
 
 router.post('/', async (req, res, next) => {
   try {
-    // req.body.productId, req.body.orderId
-    // const order = Order.findByPk(req.body.orderId)
-    // const product = Product.findByPk(req.body.productId)
-
     // creates a order_item instance with this information if it does NOT exist
     // UPDATES the existing instance with this new field
     // order.addProduct(product, {through: {quantity: req.body.quantity}}) // quantity: req.body.quantity
