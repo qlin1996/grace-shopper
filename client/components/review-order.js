@@ -45,31 +45,54 @@ class ReviewOrder extends Component {
     return (
       <div>
         <h1>Review Order</h1>
+        {user.billingStreetAddress !== '' ? (
+          <div>
+            <h2>Bill To:</h2>
+            <p>{user.billingStreetAddress}</p>
+            <p>
+              {user.billingCity}, {user.billingState} {user.billingZipCode}
+            </p>
+            <h2>Ship To:</h2>
+            <p>{user.shippingStreetAddress}</p>
+            <p>
+              {user.shippingCity}, {user.shippingState} {user.shippingZipCode}
+            </p>
 
-        <h2>Bill To:</h2>
-        <p>{user.billingStreetAddress}</p>
-        <p>
-          {user.billingCity}, {user.billingState} {user.billingZipCode}
-        </p>
+            <h2>Your Order:</h2>
+            {products.map(product => {
+              return (
+                <div className="individual-product" key={product.id}>
+                  <h1> Name: {product.name}</h1>
+                  <img src={product.imageUrl} />
+                  <h3> Price: {product.orderItem.price}</h3>
+                  <h3> Quantity: {product.orderItem.quantity}</h3>
+                  <p> Total: {product.price * product.orderItem.quantity}</p>
+                </div>
+              )
+            })}
+          </div>
+        ) : (
+          <div>
+            <h2>Ship To:</h2>
+            <p>{user.shippingStreetAddress}</p>
+            <p>
+              {user.shippingCity}, {user.shippingState} {user.shippingZipCode}
+            </p>
 
-        <h2>Ship To:</h2>
-        <p>{user.shippingStreetAddress}</p>
-        <p>
-          {user.shippingCity}, {user.shippingState} {user.shippingZipCode}
-        </p>
-
-        <h2>Your Order:</h2>
-        {products.map(product => {
-          return (
-            <div className="individual-product" key={product.id}>
-              <h1> Name: {product.name}</h1>
-              <img src={product.imageUrl} />
-              <h3> Price: {product.orderItem.price}</h3>
-              <h3> Quantity: {product.orderItem.quantity}</h3>
-              <p> Total: {product.price * product.orderItem.quantity}</p>
-            </div>
-          )
-        })}
+            <h2>Your Order:</h2>
+            {products.map(product => {
+              return (
+                <div className="individual-product" key={product.id}>
+                  <h1> Name: {product.name}</h1>
+                  <img src={product.imageUrl} />
+                  <h3> Price: {product.orderItem.price}</h3>
+                  <h3> Quantity: {product.orderItem.quantity}</h3>
+                  <p> Total: {product.price * product.orderItem.quantity}</p>
+                </div>
+              )
+            })}
+          </div>
+        )}
 
         <h3>Cart's Total: ${totalInInteger / 100}</h3>
 

@@ -45,7 +45,7 @@ const AuthForm = props => {
             </div>
             <br />
             <div>
-              <button type="submit" className="auth-button1">
+              <button type="submit" id="login-sign-button">
                 {displayName}
               </button>
             </div>
@@ -54,10 +54,13 @@ const AuthForm = props => {
               error.response && (
                 <div className="error-message"> {error.response.data} </div>
               )}
-            <button type="button" className="auth-google-button1">
-              <a href="/auth/google">{displayName} with Google</a>
-            </button>
-            <img src="/google.png" alt="image" className="google-logo1" />
+            <a href="/auth/google">
+              <img
+                src="/googleButton.png"
+                alt="image"
+                className="auth-button1"
+              />
+            </a>
           </form>
         </div>
       ) : (
@@ -80,13 +83,17 @@ const AuthForm = props => {
               <input name="password" type="password" />
             </div>
             <br />
+            <br />
             <div>
-              <button type="submit" className="auth-button2">
+              <button type="submit" id="login-sign-button2">
                 {displayName}
+                <br />
               </button>
               <br />
-              <br />
+
               <p className="option-or">⇜ or ⇝</p>
+              <br />
+              <br />
               <Link to="/signup" id="sign-up">
                 SIGN UP
               </Link>
@@ -96,10 +103,13 @@ const AuthForm = props => {
               error.response && (
                 <div className="error-message"> {error.response.data} </div>
               )}
-            <button type="button" className="auth-google-button2">
-              <a href="/auth/google">{displayName} with Google</a>
-            </button>
-            <img src="/google.png" alt="image" className="google-logo2" />
+            <a href="/auth/google">
+              <img
+                src="/googleButton.png"
+                alt="image"
+                className="auth-button2"
+              />
+            </a>
           </form>
         </div>
       )}

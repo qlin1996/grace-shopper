@@ -16,6 +16,7 @@ class Products extends Component {
 
   componentDidMount() {
     this.props.getProducts()
+    console.log(this.props, 'PROPS')
   }
 
   paginate(pageNum) {
@@ -47,6 +48,14 @@ class Products extends Component {
 
     return (
       <div>
+        <br />
+        <br />
+        <img
+          src="/icon-logo.png"
+          alt="image"
+          className="icon-logo"
+        /> <br /> <br /> <br /> <br /> <br />
+        <br />
         {currentProductsOnPage.map(product => {
           return (
             <div key={product.id} className="individual-product">

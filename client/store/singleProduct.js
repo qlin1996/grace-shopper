@@ -1,9 +1,12 @@
 import axios from 'axios'
+
+//ACTION TYPES
 const GET_PRODUCT = 'GET_PRODUCT'
 const EDIT_PRODUCT = 'EDIT_PRODUCT'
 const DELETE_PRODUCT = 'DELETE_PRODUCT'
 const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
 
+//ACTION CREATORS
 export const getProduct = product => ({
   type: GET_PRODUCT,
   product
@@ -23,6 +26,7 @@ export const deleteProduct = id => ({
   id
 })
 
+//THUNK CREATORS
 export const fetchSingleProduct = id => async dispatch => {
   try {
     const {data} = await axios.get(`/api/products/${id}`)
@@ -60,6 +64,8 @@ export const updateQuantityInStock = (
     console.error(error)
   }
 }
+
+//SINGLE PRODUCT REDUCER
 export default function productSingleReducer(state = {}, action) {
   switch (action.type) {
     case GET_PRODUCT:
