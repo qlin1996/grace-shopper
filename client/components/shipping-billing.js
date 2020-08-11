@@ -508,7 +508,6 @@ class Shipping extends Component {
                   Review Order
                 </button>
               </Link>
-
               <button
                 className="save-info-button"
                 type="button"

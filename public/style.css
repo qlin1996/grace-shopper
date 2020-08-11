@@ -173,7 +173,7 @@ select {
 
 .checkout-shipping-header {
   position: absolute;
-  left: 41%;
+  left: 43%;
   font-size: 22px;
   letter-spacing: 1px;
   font-family: 'Times New Roman', Times, serif;
@@ -291,7 +291,7 @@ select {
   width: 70%;
   border-radius: 2%;
   position: absolute;
-  top: 59%;
+  top: 66%;
   left: 8.5%;
   font-size: 20px;
   background-color: #f7f5f0;
@@ -452,4 +452,13 @@ select {
   color: black;
   font-size: 22px;
   left: 145%;
+}
+
+/* CSS FOR BEST SELLER */
+.best-seller-star {
+  width: 50px;
+  height: 40px;
+  position: absolute;
+  top: 2%;
+  left: 3%;
 }
