@@ -462,3 +462,14 @@ select {
   top: 2%;
   left: 3%;
 }
+
+.sold-out-prod-text {
+  position: absolute;
+  top: 10%;
+  left: 3%;
+  color: red;
+  text-decoration: underline;
+  text-decoration-color: black;
+  font-family: 'Lucida Console', Monaco, monospace;
+  font-size: 15px;
+}

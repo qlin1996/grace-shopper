@@ -34,6 +34,9 @@ class bestSellers extends Component {
                   className="best-seller-star"
                   src="https://i.dlpng.com/static/png/6573039_preview.png"
                 />
+                <h3 className="sold-out-prod-text">
+                  sold {product.id * 3} this week!
+                </h3>
                 <h3 className="text-effects">
                   {' '}
                   Device Type: {product.category}
