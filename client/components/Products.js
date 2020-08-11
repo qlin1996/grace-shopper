@@ -7,10 +7,19 @@ import getUserInfo from '../store/user.js'
 class Products extends Component {
   componentDidMount() {
     this.props.getProducts()
+    console.log(this.props, 'PROPS')
   }
   render() {
     return (
       <div>
+        <br />
+        <br />
+        <img
+          src="/icon-logo.png"
+          alt="image"
+          className="icon-logo"
+        /> <br /> <br /> <br /> <br /> <br />
+        <br />
         {this.props.products.map(product => {
           return (
             <div key={product.id} className="individual-product">

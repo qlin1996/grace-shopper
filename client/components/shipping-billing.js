@@ -474,7 +474,7 @@ class Shipping extends Component {
                   <input
                     name="billingZipCode"
                     value={this.state.billingZipCode}
-                    onChange={this.handleSelectChange}
+                    onClick={this.handleSelectChange}
                     type="text"
                   />
                 </div>
@@ -485,7 +485,7 @@ class Shipping extends Component {
                     value={userId}
                     onClick={this.handleSelectSubmit}
                   >
-                    My Order Info Ss Correct
+                    My Order Info is Correct
                   </button>
                   <Link to="/review-order">
                     <button className="review-button" type="button">
@@ -502,6 +502,7 @@ class Shipping extends Component {
                   Review Order
                 </button>
               </Link>
+
               <button
                 className="save-info-button"
                 type="button"

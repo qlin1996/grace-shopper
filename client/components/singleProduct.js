@@ -37,9 +37,6 @@ class Product extends Component {
     this.setState({
       toastNotification: 'true'
     })
-    // confirm(
-    //   `Adding ${this.state.quantity} of ${this.props.product.name} to your cart`
-    // )
   }
   handleDelete = event => {
     event.preventDefault()
