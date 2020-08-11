@@ -269,6 +269,8 @@ class Shipping extends Component {
         </form>
         <div name={name} className="yes-no-shipping">
           <p>Use Shipping info for Billing Info?</p>
+          <br />
+
           <select
             id="selected"
             onChange={this.handleBillingChange}
@@ -278,12 +280,16 @@ class Shipping extends Component {
 
             <option value="no">No</option>
           </select>
+          <br />
+
           {this.state.selectValue === 'no' ? (
             <div>
+              <br />
+              <br />
               <p className="checkout-billing-header">
+                <br />
                 Please Enter Additional Billing Information
               </p>
-              <br />
               <form name={name} className="billing-info-form">
                 <div>
                   <label htmlFor="billingStreetAddress">
