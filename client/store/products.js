@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 const GET_PRODUCTS = 'GET_PRODUCTS'
 const ADD_PRODUCT = 'ADD_PRODUCT'
 export const getProducts = products => ({

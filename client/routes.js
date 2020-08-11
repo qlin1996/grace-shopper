@@ -16,6 +16,8 @@ import {me} from './store'
 import Products from './components/Products'
 import singleProduct from './components/singleProduct'
 import Cart from './components/cart'
+import AllUsers from './components/allUsers'
+import SingleUser from './components/singleUser'
 /**
  * COMPONENT
  */
@@ -41,7 +43,8 @@ class Routes extends Component {
         <Route exact path="/review-order" component={ReviewOrder} />
         <Route exact path="/order-submitted" component={OrderSubmitted} />
         <Route exact path="/new-product" component={NewProduct} />
-
+        <Route exact path="/all-users" component={AllUsers} />
+        <Route exact path="/users/:id" component={SingleUser} />
         <Route path="/home" component={UserHome} />
         {isLoggedIn && (
           <Switch>

@@ -14,7 +14,7 @@ const isAdmin = (req, res, next) => {
 }
 
 //GET --> /api/orders/
-router.get('/', isAdmin, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const orders = await Order.findAll()
     res.status(200).json(orders)
@@ -23,7 +23,7 @@ router.get('/', isAdmin, async (req, res, next) => {
   }
 })
 
-router.post('/', isAdmin, async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
     const order = await Order.create(req.body)
     res.status(200).json(order)

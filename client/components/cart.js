@@ -13,6 +13,18 @@ class Cart extends Component {
   render() {
     console.log('THIS IS THE CART THAT IS GIVING US PROBLEMS', this.props.cart)
     const products = this.props.cart.products || []
+
+    console.log('products >>> ', products)
+
+    const data = JSON.stringify(products)
+
+    console.log('data >>> ', data)
+
+    localStorage.setItem('data', data)
+    const savedInfo = JSON.parse(localStorage.getItem('data'))
+
+    console.log('savedInfo >>> ', savedInfo)
+
     return (
       <div>
         <h1>Cart</h1>

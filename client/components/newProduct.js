@@ -30,14 +30,14 @@ class NewProduct extends Component {
     const description = event.target.descriptionOfProduct.value
     const imageOfProduct = event.target.imageOfProduct.value
     const price = event.target.priceOfProduct.value
-    const quantityOfProduct = event.target.quantityOfProduct.value
+    const quantityInStock = event.target.quantityOfProduct.value
     const categoryOfProduct = event.target.categoryOfProduct.value
     this.props.newProduct({
       name: nameOfProduct,
       description,
       price,
       image: imageOfProduct,
-      quantity: quantityOfProduct,
+      quantityInStock,
       category: categoryOfProduct
     })
   }
@@ -116,4 +116,4 @@ const mapDispatchToProps = dispatch => ({
   getUser: userId => dispatch(getUserInfo(userId))
 })
 
-export default connect(null, mapDispatchToProps)(NewProduct)
+export default connect(mapToState, mapDispatchToProps)(NewProduct)

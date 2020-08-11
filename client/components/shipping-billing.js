@@ -23,7 +23,7 @@ class Shipping extends Component {
     this.handleSelectSubmit = this.handleSelectSubmit.bind(this)
   }
   componentDidMount() {
-    this.props.getUser(this.props.user.userId)
+    this.props.getUser(this.props.user.id)
   }
   handleBillingChange(event) {
     this.setState({
@@ -523,8 +523,8 @@ const mapDispatchToProps = dispatch => {
     updateUser: (id, updateData) => {
       return dispatch(updateUser(id, updateData))
     },
-    getUser: () => {
-      return dispatch(getUserInfo())
+    getUser: userId => {
+      return dispatch(getUserInfo(userId))
     }
   }
 }

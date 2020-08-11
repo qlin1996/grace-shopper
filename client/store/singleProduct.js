@@ -33,7 +33,8 @@ export const fetchSingleProduct = id => async dispatch => {
 export const putProduct = (id, newInfo) => async dispatch => {
   try {
     const {data} = await axios.put(`/api/products/${id}`, newInfo)
-    return dispatch(editProduct(data))
+    console.log('data >>>> ', data)
+    return dispatch(editProduct(id, data))
   } catch (error) {
     console.log(error)
   }
@@ -63,9 +64,9 @@ export default function productSingleReducer(state = {}, action) {
     case GET_PRODUCT:
       return action.product
     case EDIT_PRODUCT:
-      return action.product
+      return action.newInfo
     case DELETE_PRODUCT:
-      return [...state.filter(product => product.id !== Number(action.id))]
+      return {}
     case UPDATE_QUANTITY:
       return action.product
     default:

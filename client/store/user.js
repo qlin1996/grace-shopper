@@ -8,6 +8,7 @@ const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const UPDATE_CURRENT_USER = 'UPDATE_CURRENT_USER'
 const ADD_USER = 'ADD_USER'
+const UPDATE_USER_ADMIN = 'UPDATE_USER_ADMIN'
 /**
  * INITIAL STATE
  */
@@ -19,14 +20,28 @@ const defaultUser = {}
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 const updateCurrentUser = user => ({type: UPDATE_CURRENT_USER, user})
+const updateUserAdmin = (id, newInfo) => ({
+  type: UPDATE_USER_ADMIN,
+  id,
+  newInfo
+})
 
 /**
  * THUNK CREATORS
  */
+
+export const putUser = (id, newInfo) => async dispatch => {
+  try {
+    const {data} = await axios.put(`/api/users/${id}`, newInfo)
+    return dispatch(updateUserAdmin(id, data))
+  } catch (error) {
+    console.log(error)
+  }
+}
 export const getUserInfo = userId => async dispatch => {
   try {
-    // const res = await axios.get(`api/users/${userId}`)
-    dispatch(getUser(res.data || defaultUser))
+    const {data} = await axios.get(`api/users/${userId}`)
+    dispatch(getUser(data || defaultUser))
   } catch (err) {
     console.error(err)
   }
@@ -116,6 +131,8 @@ export default function(state = defaultUser, action) {
       return defaultUser
     case UPDATE_CURRENT_USER:
       return action.user
+    case UPDATE_USER_ADMIN:
+      return action.newInfo
     case ADD_USER:
       return [...state, action.user]
     default:

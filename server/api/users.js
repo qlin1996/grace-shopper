@@ -4,7 +4,7 @@ module.exports = router
 
 //protection A.K.A. isAdmin
 const isAdmin = (req, res, next) => {
-  if (!User.user && !User.isAdmin) {
+  if (User.isAdmin === 'no') {
     const error = new Error("you can't hack us")
     res.status(401).send(error)
     return next(error)
@@ -52,7 +52,6 @@ router.put('/:userId', async (req, res, next) => {
       where: {
         id: req.params.userId
       }
-      // include: Order // ??
     })
       .then(user => user.update(req.body))
       .then(user => {
