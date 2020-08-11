@@ -50,6 +50,13 @@ img {
   position: absolute;
   left: 48%;
 }
+.cart-image {
+  width: 60px;
+  height: 50px;
+  position: absolute;
+  left: 95%;
+  top: 12%;
+}
 
 /* CSS FOR USER LOGIN AND SIGNUP COMPONENTS */
 .auth-forms {
@@ -444,6 +451,13 @@ select {
 
 .toast-text {
   font-family: 'Lucida Console', Monaco, monospace;
-
   color: red;
+}
+
+.cart-toast-notification {
+  position: absolute;
+  top: -13%;
+  color: black;
+  font-size: 22px;
+  left: 145%;
 }

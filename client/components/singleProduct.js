@@ -156,14 +156,24 @@ class Product extends Component {
               <button type="submit">Submit</button>
             </form>
             {this.state.toastNotification === 'true' ? (
-              <div className="toast-notification">
-                <p>
-                  {' '}
-                  Adding
-                  <p className="toast-text">{`${this.state.quantity}`}</p> of
-                  <p className="toast-text">{`${this.props.product.name}`}</p>
-                  to your cart
-                </p>
+              <div>
+                <div className="cart-toast-notification">
+                  {this.state.quantity}
+                </div>
+                <div>
+                  <div className="toast-notification">
+                    <p>
+                      {' '}
+                      Adding
+                      <p className="toast-text">{`${this.state.quantity}`}</p>{' '}
+                      of
+                      <p className="toast-text">{`${
+                        this.props.product.name
+                      }`}</p>
+                      to your cart
+                    </p>
+                  </div>
+                </div>
               </div>
             ) : (
               <div />
