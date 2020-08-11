@@ -480,15 +480,15 @@ class Shipping extends Component {
                 </div>
                 <div>
                   <button
+                    type="button"
                     className="save-info-button"
-                    type="submit"
                     value={userId}
                     onClick={this.handleSelectSubmit}
                   >
-                    Ready To Submit Order Info?
+                    My Order Info Ss Correct
                   </button>
                   <Link to="/review-order">
-                    <button type="button" className="review-button">
+                    <button className="review-button" type="button">
                       Review Order
                     </button>
                   </Link>
@@ -498,21 +498,18 @@ class Shipping extends Component {
           ) : (
             <div>
               <Link to="/review-order">
-                <button
-                  className="save-info-button"
-                  type="submit"
-                  value={userId}
-                  onClick={this.handleSelectSubmit}
-                >
-                  My Information is Correct
-                </button>
-              </Link>
-
-              <Link to="/review-order">
                 <button type="button" className="review-button">
                   Review Order
                 </button>
               </Link>
+              <button
+                className="save-info-button"
+                type="button"
+                value={userId}
+                onClick={this.handleSelectSubmit}
+              >
+                My Order Info is Correct
+              </button>
             </div>
           )}
         </div>

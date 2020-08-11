@@ -399,7 +399,7 @@ select {
   padding: 10px;
   background-color: white;
   position: relative;
-  left: -2%;
+  left: -10%;
 }
 
 .checkout-forms {
@@ -420,4 +420,30 @@ select {
   background-color: white;
   position: relative;
   left: 60%;
+}
+
+/* //CSS FOR TOAST NOTIFICATION */
+.toast-notification {
+  background-color: #e4e7f5;
+  position: absolute;
+  top: -1%;
+  width: 200px;
+  line-height: 1.5em;
+  right: -50%;
+  transition: width 2s;
+  font-family: 'Lucida Console', Monaco, monospace;
+  float: left;
+  width: 200px;
+  padding: 20px 30px;
+  margin: 30px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.5s;
+}
+
+.toast-text {
+  font-family: 'Lucida Console', Monaco, monospace;
+
+  color: red;
 }
