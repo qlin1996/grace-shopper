@@ -6,7 +6,7 @@ import CartItem from './cart-items'
 
 class Cart extends Component {
   componentDidMount() {
-    // ORDERID IS HARDCODED RN. NEED TO PASS DOWN AND REPLACE.
+    // ORDERID IS HARDCODED RN.
     this.props.getItems(1)
   }
 
@@ -34,10 +34,12 @@ class Cart extends Component {
           ) / 100}
         </h3>
 
-        {products && (
+        {products.length ? (
           <Link to="./shipping-billing">
             <button type="button">Checkout</button>
           </Link>
+        ) : (
+          <button type="button">Checkout</button>
         )}
       </div>
     )
