@@ -6,7 +6,7 @@ import CartItem from './cart-items'
 
 class Cart extends Component {
   componentDidMount() {
-    // ORDERID IS HARDCODED RN. NEED TO PASS DOWN AND REPLACE.
+    // ORDERID IS HARDCODED RN.
     this.props.getItems(1)
   }
 
