@@ -43,6 +43,7 @@ export const putProduct = (id, newInfo) => async dispatch => {
     console.log(error)
   }
 }
+
 export const destroyProduct = id => async dispatch => {
   try {
     await axios.delete(`/api/products/${id}`)

@@ -2,12 +2,11 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchProducts} from '../store/products'
 import {Link} from 'react-router-dom'
-import getUserInfo from '../store/user.js'
+// import getUserInfo from '../store/user.js'
 
 class Products extends Component {
   componentDidMount() {
     this.props.getProducts()
-    console.log(this.props, 'PROPS')
   }
   render() {
     return (
@@ -28,7 +27,6 @@ class Products extends Component {
                 <img src={product.imageUrl} />
                 <h3 className="text-effects"> Price: {product.price}</h3>
                 <h3 className="text-effects">
-                  {' '}
                   Device Type: {product.category}
                 </h3>
               </Link>
