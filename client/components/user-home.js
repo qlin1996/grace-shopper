@@ -31,6 +31,7 @@ class UserHome extends Component {
       if (filter === 'Computers') return product.category === 'Computer'
       if (filter === 'TVs') return product.category === 'TV'
     })
+
     const user = this.props.user
     const {email} = this.props
     return (
@@ -42,7 +43,6 @@ class UserHome extends Component {
         ) : (
           <h3>Welcome, {email}</h3>
         )}
-
         <img src="/icon-logo.png" alt="image" className="icon-logo" />
         <div className="sidebar-buttons-div">
           <button
