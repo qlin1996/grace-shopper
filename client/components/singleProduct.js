@@ -6,7 +6,7 @@ import {
   destroyProduct
 } from '../store/singleProduct'
 
-import {addToCart} from '../store/shoppingCart'
+import {addToCart, getCartItems} from '../store/shoppingCart'
 import {render} from 'enzyme'
 class Product extends Component {
   constructor() {
@@ -34,6 +34,8 @@ class Product extends Component {
       productId: this.props.product.id,
       orderId: 1
     })
+    // ORDER ID HARD CODED
+    this.props.getItems(1)
     this.setState({
       toastNotification: 'true'
     })
@@ -164,9 +166,6 @@ class Product extends Component {
             </form>
             {this.state.toastNotification === 'true' ? (
               <div>
-                <div className="cart-toast-notification">
-                  {this.state.quantity}
-                </div>
                 <div>
                   <div className="toast-notification">
                     <p>
@@ -200,7 +199,10 @@ const mapDispatch = dispatch => ({
   getProduct: id => dispatch(fetchSingleProduct(id)),
   addItem: item => dispatch(addToCart(item)),
   updateProduct: (id, newInfo) => dispatch(putProduct(id, newInfo)),
-  deleteProduct: id => dispatch(destroyProduct(id))
+  deleteProduct: id => dispatch(destroyProduct(id)),
+  getItems(orderId) {
+    dispatch(getCartItems(orderId))
+  }
 })
 
 export default connect(mapToState, mapDispatch)(Product)
