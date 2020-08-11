@@ -11,7 +11,10 @@ class Cart extends Component {
   }
 
   render() {
-    console.log('THIS IS THE CART THAT IS GIVING US PROBLEMS', this.props.cart)
+    console.log(
+      'THIS IS THE CART THAT IS GIVING US PROBLEMS',
+      this.props.cart.products
+    )
     const products = this.props.cart.products || []
     return (
       <div>
@@ -34,10 +37,12 @@ class Cart extends Component {
           ) / 100}
         </h3>
 
-        {products && (
+        {products.length ? (
           <Link to="./shipping-billing">
             <button type="button">Checkout</button>
           </Link>
+        ) : (
+          <button type="button">Checkout</button>
         )}
       </div>
     )
