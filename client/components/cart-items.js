@@ -38,6 +38,7 @@ class CartItem extends Component {
   }
 
   render() {
+    const priceInInt = this.props.product.price * 100
     return (
       <React.Fragment>
         {this.props.product.orderItem.quantity <= 0 ? (
@@ -66,7 +67,6 @@ class CartItem extends Component {
               </div>
             ) : this.props.product.orderItem.quantity === 1 ? (
               <div>
-                <p>about to delete</p>
                 <div className="input-group plus-minus-input">
                   <div className="input-group-button">
                     <button
@@ -81,7 +81,9 @@ class CartItem extends Component {
                   </div>
                   <h3> Quantity: {this.props.product.orderItem.quantity}</h3>
                   <div className="input-group-button">
-                    <button type="button">+</button>
+                    <button type="button" onClick={this.plus}>
+                      +
+                    </button>
                   </div>
                 </div>
               </div>
@@ -103,8 +105,7 @@ class CartItem extends Component {
 
             <p>
               {' '}
-              Total:{' '}
-              {this.props.product.price * this.props.product.orderItem.quantity}
+              Total: {priceInInt * this.props.product.orderItem.quantity / 100}
             </p>
           </div>
         )}
