@@ -22,6 +22,7 @@ export const deleteProduct = id => ({
   type: DELETE_PRODUCT,
   id
 })
+
 export const fetchSingleProduct = id => async dispatch => {
   try {
     const {data} = await axios.get(`/api/products/${id}`)
@@ -38,6 +39,7 @@ export const putProduct = (id, newInfo) => async dispatch => {
     console.log(error)
   }
 }
+
 export const destroyProduct = id => async dispatch => {
   try {
     await axios.delete(`/api/products/${id}`)
