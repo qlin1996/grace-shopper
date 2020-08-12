@@ -43,12 +43,21 @@ class Shipping extends Component {
     const userId = this.props.user.id
     return (
       <div>
-        <img src="/icon-logo.png" alt="image" className="icon-logo" /> <br />{' '}
-        <br />
-        <p className="checkout-shipping-header">
-          {' '}
-          Please Enter Shipping <br /> & Billing Information
-        </p>
+        <div className="row justify-content-center">
+          <div className="col-2 text-center">
+            <img
+              src="/icon-logo.png"
+              alt="image"
+              className="icon-logo-2 img-fluid"
+            />
+          </div>
+        </div>
+        <div className="welcome-div row justify-content-center">
+          <p className="welcome-header">
+            {' '}
+            Please Enter Shipping <br /> & Billing Information
+          </p>
+        </div>
         <form name={name} className="checkout-forms">
           <div>
             <label htmlFor="firstName">
@@ -485,13 +494,14 @@ class Shipping extends Component {
                   />
                 </div>
                 <div>
+                  <br />
                   <button
                     type="button"
                     className="save-info-button"
                     value={userId}
                     onClick={this.handleSelectSubmit}
                   >
-                    My Order Info is Correct
+                    <img src="/check.png" className="icon-logo-2 img-fluid" />
                   </button>
                   <Link to="/review-order">
                     <button className="review-button" type="button">
@@ -509,12 +519,12 @@ class Shipping extends Component {
                 </button>
               </Link>
               <button
-                className="save-info-button"
+                className="save-info-button2"
                 type="button"
                 value={userId}
                 onClick={this.handleSelectSubmit}
               >
-                My Order Info is Correct
+                <img src="/check.png" className="icon-logo-2 img-fluid" />
               </button>
             </div>
           )}

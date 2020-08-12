@@ -8,7 +8,7 @@ class Cart extends Component {
   componentDidMount() {
     // ORDERID IS HARDCODED RN.
     this.props.getNewOrder(this.props.user.id)
-    this.props.getItems(this.props.user.id)
+    this.props.getItems(1)
   }
 
   render() {

@@ -13,7 +13,7 @@ class ReviewOrder extends Component {
     this.props.getUser(this.props.user.id)
     // hard coded oderId for now. need to pass down orderId
     this.props.getNewOrder(this.props.user.id)
-    this.props.getItems(this.props.user.id)
+    this.props.getItems(1)
   }
 
   handleClick = () => {

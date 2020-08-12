@@ -36,7 +36,7 @@ class UserHome extends Component {
     // const {email} = this.props
     return (
       <div>
-        <div className="welcome-div">
+        <div className="welcome-div row justify-content-center">
           {user.firstName ? (
             <h3 className="welcome-text">
               Welcome, {user.firstName} {user.lastName}
@@ -45,71 +45,86 @@ class UserHome extends Component {
             <h3 className="welcome-text">Welcome, Guest</h3>
           )}
         </div>
-        <img src="/icon-logo.png" alt="image" className="icon-logo" />
-        <div className="sidebar-buttons-div">
+        <div className="row justify-content-center">
+          <div className="col-2 text-center">
+            <img
+              src="/icon-logo.png"
+              alt="image"
+              className="icon-logo img-fluid"
+            />
+          </div>
+        </div>
+
+        <div className="sidebar-buttons-div row d-flex justify-content-center mb-5">
           <button
             type="button"
-            className="sidebar-buttons"
+            className=" nav-a-text individual-product-color-1 p-4 m-2"
             value="All"
             onClick={this.handleClick}
           >
             All
           </button>
-          <br />
           <button
             type="button"
-            className="sidebar-buttons"
+            className="nav-a-text individual-product-color-1 p-4 m-2"
             value="Computers"
             onClick={this.handleClick}
           >
             Computers
           </button>
-          <br />
 
           <button
             type="button"
-            className="sidebar-buttons"
+            className="nav-a-text individual-product-color-2 p-4 m-2"
             value="Tablets"
             onClick={this.handleClick}
           >
             Tablets
           </button>
-          <br />
-
           <button
             type="button"
-            className="sidebar-buttons"
+            className="nav-a-text individual-product-color-3 p-4 m-2"
             value="Phones"
             onClick={this.handleClick}
           >
             Phones
           </button>
-          <br />
-
           <button
             type="button"
-            className="sidebar-buttons"
+            className="nav-a-text individual-product-color-4 p-4 m-2"
             value="TVs"
             onClick={this.handleClick}
           >
             TVs
           </button>
         </div>
-        {products.map(product => {
-          return (
-            <div key={product.id} className="individual-product-home">
-              <Link to={`/products/${product.id}`}>
-                <h1 className="text-effects"> Name: {product.name}</h1>
-                <img src={product.imageUrl} />
-                <h3 className="text-effects"> Price: {product.price}</h3>
-                <h3 className="text-effects">
-                  {' '}
-                  Device Type: {product.category}
-                </h3>
-              </Link>
-            </div>
-          )
-        })}
+        <div className="row products-row p-4">
+          {products.map((product, index) => {
+            let backgroundColors = [
+              'individual-product-color-1',
+              'individual-product-color-2',
+              'individual-product-color-3',
+              'individual-product-color-4'
+            ]
+            let chooseColor = backgroundColors[index % 4]
+            return (
+              <div key={product.id} className=" col-4 h-100">
+                <div
+                  className={`individual-product-home m-1 h-100 ${chooseColor}`}
+                >
+                  <Link to={`/products/${product.id}`}>
+                    <h1 className="text-effects"> Name: {product.name}</h1>
+                    <img src={product.imageUrl} />
+                    <h3 className="text-effects"> Price: {product.price}</h3>
+                    <h3 className="text-effects">
+                      Device Type: {product.category}
+                    </h3>
+                  </Link>
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }

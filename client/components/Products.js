@@ -11,30 +11,45 @@ class Products extends Component {
   render() {
     return (
       <div>
-        <br />
-        <br />
-        <img
-          src="/icon-logo.png"
-          alt="image"
-          className="icon-logo"
-        /> <br /> <br /> <br /> <br /> <br />
-        <br />
-        <img src="/deal.png" alt="img" className="deal-img" />
-        {this.props.products.map(product => {
-          return (
-            <div key={product.id} className="individual-product">
-              <Link to={`/products/${product.id}`}>
-                <h1 className="text-effects"> Name: {product.name}</h1>
-                <img src={product.imageUrl} />
-                <h3 className="text-effects"> Price: {product.price}</h3>
-                <h3 className="text-effects">
-                  {' '}
-                  Device Type: {product.category}
-                </h3>
-              </Link>
-            </div>
-          )
-        })}
+        <div className="row justify-content-center">
+          <div className="col-2 text-center">
+            <img
+              src="/icon-logo.png"
+              alt="image"
+              className="icon-logo img-fluid"
+            />
+          </div>
+        </div>
+        <div className="welcome-div row justify-content-center">
+          <h3 className="welcome-text">VIEW ALL PRODUCTS</h3>
+        </div>
+        <div className="row products-row p-4">
+          {this.props.products.map((product, index) => {
+            let backgroundColors = [
+              'individual-product-color-1',
+              'individual-product-color-2',
+              'individual-product-color-3',
+              'individual-product-color-4'
+            ]
+            let chooseColor = backgroundColors[index % 4]
+            return (
+              <div key={product.id} className="col-4 h-100">
+                <div
+                  className={`individual-product-home m-1 h-100 ${chooseColor}`}
+                >
+                  <Link to={`/products/${product.id}`}>
+                    <h1 className="text-effects"> Name: {product.name}</h1>
+                    <img src={product.imageUrl} />
+                    <h3 className="text-effects"> Price: {product.price}</h3>
+                    <h3 className="text-effects">
+                      Device Type: {product.category}
+                    </h3>
+                  </Link>
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }

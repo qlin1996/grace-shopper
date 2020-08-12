@@ -4,13 +4,20 @@ import {connect} from 'react-redux'
 const About = () => {
   return (
     <div>
-      <div className="who-we-are">
-        <h2 className="who-we-are-div">Who We Are</h2>
-        <img
-          src="/icon-logo.png"
-          alt="image"
-          className="icon-logo"
-        /> <br /> <br /> <br />
+      <div className="row justify-content-center">
+        <div className=" who-we-are-div">Who We Are</div>
+      </div>
+      <div className="row justify-content-center">
+        <div className="col-2 text-center">
+          <img
+            src="/icon-logo.png"
+            alt="image"
+            className="icon-logo img-fluid"
+          />
+        </div>
+      </div>
+      <br /> <br /> <br />
+      <div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
           condimentum dolor ac magna accumsan, non cursus arcu blandit. Mauris
@@ -22,7 +29,9 @@ const About = () => {
           elit.
         </p>
       </div>
-      <h2 className="main-about-text">Our Founders</h2>
+      <div className="row justify-content-center">
+        <div className=" main-about-text">Our Founders</div>
+      </div>
       <div className="flex">
         <div className="about-us-div">
           <img src="https://ca.slack-edge.com/T024FPYBQ-U01616MCD8Q-g71d80b2c1f5-512" />
