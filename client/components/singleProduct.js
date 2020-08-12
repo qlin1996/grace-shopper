@@ -9,7 +9,6 @@ import {
 import {addToCart, getCartItems} from '../store/shoppingCart'
 import {getUserInfo} from '../store/user'
 
-import {render} from 'enzyme'
 class Product extends Component {
   constructor() {
     super()
@@ -103,14 +102,17 @@ class Product extends Component {
         {admin === 'yes' ? (
           <div>
             <div>
-              <button className="remove-product" onClick={this.handleDelete}>
+              <button
+                type="button"
+                className="remove-product"
+                onClick={this.handleDelete}
+              >
                 Delete {product.name}
               </button>
             </div>
             <div>
               <h1>Update {product.name}'s Information</h1>
               <div>
-
                 <form onSubmit={this.handleUpdate}>
                   <label>
                     Name of Product:
@@ -173,11 +175,9 @@ class Product extends Component {
         ) : (
           <div />
         )}
-      
-      
+
         {this.state.toastNotification === 'true' ? (
           <div>
-            <div className="cart-toast-notification">{this.state.quantity}</div>
             <div>
               <div className="toast-notification">
                 <p>
@@ -193,8 +193,6 @@ class Product extends Component {
         ) : (
           <div />
         )}
-
-
       </div>
     )
   }
