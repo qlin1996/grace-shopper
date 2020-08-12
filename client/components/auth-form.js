@@ -13,9 +13,18 @@ const AuthForm = props => {
     <div>
       {displayName === 'Sign Up' ? (
         <div>
-          <img src="/icon-logo.png" alt="image" className="icon-logo" /> <br />
-          <br />
-          <p className="welcome-header"> Join Us Here!</p>
+          <div className="row justify-content-center">
+            <div className="col-2 text-center">
+              <img
+                src="/icon-logo.png"
+                alt="image"
+                className="icon-logo img-fluid"
+              />
+            </div>
+          </div>
+          <div className="welcome-div row justify-content-center">
+            <p className="welcome-header"> Join Us Here!</p>
+          </div>
           <form name={name} className="auth-forms" onSubmit={handleSignUp}>
             <div>
               <label htmlFor="firstName">
@@ -65,9 +74,18 @@ const AuthForm = props => {
         </div>
       ) : (
         <div>
-          <img src="/icon-logo.png" alt="image" className="icon-logo" />
-          <br /> <br />
-          <p className="welcome-header">Welcome Back!</p>
+          <div className="row justify-content-center">
+            <div className="col-2 text-center">
+              <img
+                src="/icon-logo.png"
+                alt="image"
+                className="icon-logo img-fluid"
+              />
+            </div>
+          </div>
+          <div className="welcome-div row justify-content-center">
+            <p className="welcome-header"> Welcome Back!</p>
+          </div>
           <form name={name} className="auth-forms" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email">

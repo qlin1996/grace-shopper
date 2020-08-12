@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getCartItems} from '../store/shoppingCart'
 import CartItem from './cart-items'
-
+import {getNewOrder} from '../store/order'
 class Cart extends Component {
   componentDidMount() {
     // ORDERID IS HARDCODED RN. NEED TO PASS DOWN AND REPLACE.
@@ -12,7 +12,8 @@ class Cart extends Component {
   }
 
   render() {
-    console.log('THIS IS THE CART THAT IS GIVING US PROBLEMS', this.props.cart)
+    console.log('THIS PROPS', this.props)
+
     const products = this.props.cart.products || []
 
     // console.log('products >>> ', products);
@@ -60,13 +61,16 @@ class Cart extends Component {
 }
 
 const mapToState = state => ({
-  cart: state.cart
+  user: state.user,
+  cart: state.cart,
+  order: state.order
 })
 
 const mapDispatch = dispatch => ({
   getItems: orderId => {
     return dispatch(getCartItems(orderId))
-  }
+  },
+  getNewOrder: userId => dispatch(getNewOrder(userId))
 })
 
 export default connect(mapToState, mapDispatch)(Cart)

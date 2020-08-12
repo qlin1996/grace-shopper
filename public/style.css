@@ -2,29 +2,52 @@
 body {
   font-family: sans-serif;
 }
-
+p {
+  font-family: 'Lucida Console', Monaco, monospace;
+}
 a {
   text-decoration: none;
 }
-
+small {
+  font-family: 'Lucida Console', Monaco, monospace;
+}
 label {
   display: block;
 }
-
+a:hover {
+  text-decoration: none;
+}
 nav a {
   display: inline-block;
-  margin: 1em;
-  font-size: 18px;
+  font-size: 20px;
   color: black;
   text-transform: uppercase;
   font-family: 'Lucida Console', Monaco, monospace;
+  text-decoration: none;
+}
+nav a:hover {
   text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
     0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
     0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
     0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
     0 20px 20px rgba(0, 0, 0, 0.15);
 }
-
+.nav-row {
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+.nav-a-text {
+  background-color: #f0efeb;
+  border-style: hidden;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Lucida Console', Monaco, monospace;
+}
+.nav-a-text:hover {
+  /* On mouse-over, make the elements appear as they should */
+  transform: scale(1.2);
+}
 /* CSS FOR NAVBAR AND LOGO */
 form div {
   margin: 1em;
@@ -41,21 +64,38 @@ img {
 }
 
 .nav-logo {
-  width: 390px;
-  height: 125px;
+  width: 340px;
+  height: 115px;
+}
+
+.nav-logo:hover {
+  animation: bounce 2.5s infinite;
+}
+@-webkit-keyframes bounce {
+  0%,
+  100% {
+    -webkit-transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-6px);
+  }
 }
 .icon-logo {
-  width: 160px;
-  height: 60px;
-  position: absolute;
-  left: 48%;
+  width: 60px;
+  height: auto;
+}
+.icon-logo-2 {
+  width: 30px;
+  height: auto;
+  position: relative;
+  left: 8%;
 }
 .cart-image {
-  width: 60px;
-  height: 50px;
+  width: 70px;
+  height: 60px;
   position: absolute;
-  left: 95%;
-  top: 12%;
+  top: 15%;
+  right: 2%;
 }
 
 /* CSS FOR USER LOGIN AND SIGNUP COMPONENTS */
@@ -120,11 +160,18 @@ select {
 }
 
 .welcome-header {
-  position: absolute;
-  left: 46%;
   font-size: 22px;
   letter-spacing: 1px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Lucida Console', Monaco, monospace;
+}
+
+.welcome-text {
+  margin: 1em;
+  font-size: 20px;
+  color: black;
+  text-transform: uppercase;
+  font-family: 'Lucida Console', Monaco, monospace;
+  animation: bounce 2.5s infinite;
 }
 
 .option-or {
@@ -176,7 +223,7 @@ select {
   left: 43%;
   font-size: 22px;
   letter-spacing: 1px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Lucida Console', Monaco, monospace;
   color: black;
 }
 
@@ -218,12 +265,39 @@ select {
 
 .text-effects {
   font-family: 'Lucida Console', Monaco, monospace;
+  font-size: 25px;
   color: black;
+  transition: 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.nav-cart-quantity {
+  position: absolute;
+  font-size: 30px;
+  left: 95.5%;
+  top: 12%;
+}
+
+.paginate-pages {
+  color: dark blue;
+  font-size: 30px;
+}
+.paginate-div {
+  position: absolute;
+  bottom: -80%;
+  left: 3%;
+  display: inline-flex;
+  color: dark blue;
+  font-size: 30px;
+  font-family: 'Lucida Console', Monaco, monospace;
+}
+.text-effects:hover {
   text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
     0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
     0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
     0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
     0 20px 20px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
 }
 
 /* CSS FOR ABOUT US PAGE */
@@ -246,10 +320,7 @@ select {
 
 .main-about-text {
   font-family: 'Montserrat', sans-serif;
-  position: relative;
-  left: 80.5%;
   margin: 10px;
-  transform: translate(-50%, -50%);
   font-size: 75px;
   letter-spacing: 0.1em;
   -webkit-text-fill-color: transparent;
@@ -270,10 +341,7 @@ select {
 
 .who-we-are-div {
   font-family: 'Montserrat', sans-serif;
-  position: relative;
-  left: 50.5%;
   margin: 10px;
-  transform: translate(-50%, -50%);
   font-size: 75px;
   letter-spacing: 0.1em;
   -webkit-text-fill-color: transparent;
@@ -291,7 +359,7 @@ select {
   width: 70%;
   border-radius: 2%;
   position: absolute;
-  top: 66%;
+  top: 70%;
   left: 8.5%;
   font-size: 20px;
   background-color: #f7f5f0;
@@ -300,10 +368,10 @@ select {
 .billing-info-form {
   padding: 35px;
   margin: 35px;
-  width: 94.2%;
+  width: 100%;
   border-radius: 2%;
   position: absolute;
-  top: 5%;
+  top: 1%;
   left: -35px;
   font-size: 20px;
   background-color: #f7f5f0;
@@ -315,7 +383,7 @@ select {
   background-color: white;
   position: absolute;
   bottom: -25%;
-  left: 80%;
+  left: 30%;
 }
 
 .checkout-billing-header {
@@ -324,8 +392,8 @@ select {
   left: 3.5%;
   top: -11%;
   letter-spacing: 1px;
-  font-family: 'Times New Roman', Times, serif;
   color: black;
+  font-family: 'Lucida Console', Monaco, monospace;
 }
 
 .plus-minus-input {
@@ -338,14 +406,8 @@ select {
 
 .sidebar-buttons-div {
   background-color: white;
-  position: relative;
-  bottom: -160px;
-  width: 20%;
 }
-.sidebar-buttons {
-  width: 40%;
-  height: 10%;
-  line-height: 5em;
+/* .sidebar-buttons {
   color: black;
   margin: 1em;
   border-style: none;
@@ -358,34 +420,60 @@ select {
     0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
     0 20px 20px rgba(0, 0, 0, 0.15);
   position: relative;
-  bottom: -2px;
   border-radius: 4%;
   box-shadow: 5px 10px #f7f5f0;
-}
+} */
 
 .individual-product-home {
   padding: 20px;
-  margin: 10px;
-  width: 50%;
+  /* margin: 10px; */
   position: relative;
-  left: 22%;
-  top: -387px;
   background-color: #f7f5f0;
-  align-items: center;
-  align-self: center;
-  align-content: center;
   border-radius: 3%;
   text-align: center;
   font-family: 'Lucida Console', Monaco, monospace;
 }
+.products-row {
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
 .individual-product-home:hover {
-  background-color: #feffe0;
+  transform: scale(1.03);
 }
-.sidebar-buttons:hover {
-  left: 15px; /* On mouse-over, make the elements appear as they should */
-  color: darkblue;
-  background-color: #feffe0;
+.individual-product-color-1:hover {
+  background-color: #e8f0fc;
 }
+.individual-product-color-2:hover {
+  background-color: #5e92e0;
+}
+.individual-product-color-3:hover {
+  background-color: #dae0e8;
+}
+.individual-product-color-4:hover {
+  background-color: #7b9dc9;
+}
+.deal-img {
+  position: absolute;
+  top: 40%;
+  left: 1%;
+  width: 15%;
+  height: 35%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgray;
+}
+
+/* .home {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.home-children {
+  flex: 1 0 21%;
+position: ;} */
 
 /* CSS FOR RESPONSIVENESS */
 @-ms-viewport {
@@ -397,10 +485,15 @@ select {
   margin: 10px;
   padding: 10px;
   background-color: white;
-  position: relative;
-  left: -10%;
 }
 
+.save-info-button2 {
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  position: relative;
+  left: -16%;
+}
 .checkout-forms {
   padding: 35px;
   margin: 35px;
@@ -465,11 +558,11 @@ select {
 
 .sold-out-prod-text {
   position: absolute;
-  top: 10%;
+  top: 14%;
   left: 3%;
+  text-transform: uppercase;
   color: red;
-  text-decoration: underline;
-  text-decoration-color: black;
+
   font-family: 'Lucida Console', Monaco, monospace;
   font-size: 15px;
 }

@@ -23,6 +23,21 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+//GET --> /api/orders/user/:id
+router.get('/user/:id', async (req, res, next) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        userId: req.params.id,
+        isFulfilled: 'no'
+      }
+    })
+    res.status(200).json(order)
+  } catch (error) {
+    next(error)
+  }
+})
+
 //POST --> /api/orders/
 router.post('/', async (req, res, next) => {
   try {
