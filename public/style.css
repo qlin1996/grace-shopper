@@ -1,3 +1,4 @@
+/* GENERAL CSS */
 body {
   font-family: sans-serif;
 }
@@ -24,6 +25,7 @@ nav a {
     0 20px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* CSS FOR NAVBAR AND LOGO */
 form div {
   margin: 1em;
   display: inline-block;
@@ -48,7 +50,15 @@ img {
   position: absolute;
   left: 48%;
 }
+.cart-image {
+  width: 60px;
+  height: 50px;
+  position: absolute;
+  left: 95%;
+  top: 12%;
+}
 
+/* CSS FOR USER LOGIN AND SIGNUP COMPONENTS */
 .auth-forms {
   padding: 35px;
   border-radius: 2%;
@@ -66,39 +76,26 @@ img {
 }
 
 .auth-button1 {
-  margin: 7px;
-  padding: 7px;
+  width: 12.5%;
+  height: 8.5%;
   background-color: white;
-  margin: 10;
   position: absolute;
-  left: 6%;
-  bottom: 4%;
+  left: 80%;
+  bottom: 10%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
 }
 .auth-button2 {
-  margin: 7px;
-  padding: 7px;
-  margin: 10;
+  width: 12.5%;
+  height: 8.5%;
   background-color: white;
   position: absolute;
-  left: 6%;
-  bottom: 27%;
-}
-
-.auth-google-button1 {
-  margin: 7px;
-  padding: 7px;
-  background-color: white;
-  position: absolute;
-  left: 39%;
-  bottom: 4%;
-}
-.auth-google-button2 {
-  margin: 7px;
-  padding: 7px;
-  position: absolute;
-  background-color: white;
-  left: 33%;
-  bottom: 27%;
+  left: 80%;
+  bottom: 10%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
 }
 
 input {
@@ -116,28 +113,6 @@ select {
   border-radius: 6%;
 }
 
-.google-logo1 {
-  width: 30px;
-  height: 29.2px;
-  position: absolute;
-  bottom: 5.4%;
-  border-bottom: solid 2px black;
-  border-right: solid 2px black;
-  border-top: solid 2px gray;
-  left: 52%;
-}
-
-.google-logo2 {
-  width: 30px;
-  height: 30px;
-  position: relative;
-  top: -80px;
-  left: 44%;
-  border-bottom: solid 2px black;
-  border-right: solid 2px black;
-  border-top: solid 2px gray;
-}
-
 .error-message {
   position: absolute;
   bottom: -10%;
@@ -146,7 +121,7 @@ select {
 
 .welcome-header {
   position: absolute;
-  left: 44%;
+  left: 46%;
   font-size: 22px;
   letter-spacing: 1px;
   font-family: 'Times New Roman', Times, serif;
@@ -156,7 +131,7 @@ select {
   position: absolute;
   bottom: 15%;
   color: black;
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 1.5px;
   text-decoration: underline solid blue;
 }
@@ -165,14 +140,40 @@ select {
   border-width: 1px;
 }
 
+#login-sign-button {
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  position: absolute;
+  font-size: 17px;
+  bottom: 6.5%;
+  left: 3.3%;
+  padding: 7px;
+  margin: 7px;
+}
+
+#login-sign-button2 {
+  color: black;
+  position: absolute;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 17px;
+  bottom: 28%;
+  left: 3.3%;
+  padding: 7px;
+  margin: 7px;
+}
+
 #sign-up {
   color: black;
   text-decoration: underline solid blue;
+  position: absolute;
+  font-size: 22px;
+  bottom: 10%;
+  left: 3.3%;
 }
 
 .checkout-shipping-header {
   position: absolute;
-  left: 41%;
+  left: 43%;
   font-size: 22px;
   letter-spacing: 1px;
   font-family: 'Times New Roman', Times, serif;
@@ -199,6 +200,7 @@ select {
   left: 78%;
 }
 
+/* CSS FOR SINGLE PRODUCT VIEW */
 .individual-product {
   padding: 20px;
   margin: 10px;
@@ -225,7 +227,6 @@ select {
 }
 
 /* CSS FOR ABOUT US PAGE */
-
 .who-we-are {
   padding: 50px;
   margin: 50px;
@@ -290,7 +291,7 @@ select {
   width: 70%;
   border-radius: 2%;
   position: absolute;
-  top: 70%;
+  top: 66%;
   left: 8.5%;
   font-size: 20px;
   background-color: #f7f5f0;
@@ -302,7 +303,7 @@ select {
   width: 94.2%;
   border-radius: 2%;
   position: absolute;
-  top: 2%;
+  top: 5%;
   left: -35px;
   font-size: 20px;
   background-color: #f7f5f0;
@@ -319,8 +320,9 @@ select {
 
 .checkout-billing-header {
   font-size: 22px;
-  position: relative;
-  left: 0.2%;
+  position: absolute;
+  left: 3.5%;
+  top: -11%;
   letter-spacing: 1px;
   font-family: 'Times New Roman', Times, serif;
   color: black;
@@ -377,14 +379,97 @@ select {
   font-family: 'Lucida Console', Monaco, monospace;
 }
 .individual-product-home:hover {
-  background-color: #fcf8eb;
+  background-color: #feffe0;
 }
 .sidebar-buttons:hover {
-  left: 100px; /* On mouse-over, make the elements appear as they should */
+  left: 15px; /* On mouse-over, make the elements appear as they should */
   color: darkblue;
   background-color: #feffe0;
 }
 
+/* CSS FOR RESPONSIVENESS */
 @-ms-viewport {
   width: device-width;
+}
+
+/* CSS FOR SHIPPING AND BILLING COMPONENT */
+.save-info-button {
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  position: relative;
+  left: -10%;
+}
+
+.checkout-forms {
+  padding: 35px;
+  margin: 35px;
+  width: 70%;
+  border-radius: 2%;
+  position: absolute;
+  top: 38%;
+  left: 8.5%;
+  font-size: 20px;
+  background-color: #f7f5f0;
+}
+
+.review-button {
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  position: relative;
+  left: 60%;
+}
+
+/* //CSS FOR TOAST NOTIFICATION */
+.toast-notification {
+  background-color: #e4e7f5;
+  position: absolute;
+  top: -1%;
+  width: 200px;
+  line-height: 1.5em;
+  right: -50%;
+  transition: width 2s;
+  font-family: 'Lucida Console', Monaco, monospace;
+  float: left;
+  width: 200px;
+  padding: 20px 30px;
+  margin: 30px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.5s;
+}
+
+.toast-text {
+  font-family: 'Lucida Console', Monaco, monospace;
+  color: red;
+}
+
+.cart-toast-notification {
+  position: absolute;
+  top: -13%;
+  color: black;
+  font-size: 22px;
+  left: 145%;
+}
+
+/* CSS FOR BEST SELLER */
+.best-seller-star {
+  width: 50px;
+  height: 40px;
+  position: absolute;
+  top: 2%;
+  left: 3%;
+}
+
+.sold-out-prod-text {
+  position: absolute;
+  top: 10%;
+  left: 3%;
+  color: red;
+  text-decoration: underline;
+  text-decoration-color: black;
+  font-family: 'Lucida Console', Monaco, monospace;
+  font-size: 15px;
 }

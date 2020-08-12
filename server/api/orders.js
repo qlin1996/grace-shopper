@@ -4,7 +4,7 @@ const {User} = require('../db/models')
 
 //proctection A.K.A. isAdmin
 const isAdmin = (req, res, next) => {
-  if (!User.user && !User.isAdmin) {
+  if (User.isAdmin === 'no') {
     const error = new Error("you can't hack us")
     res.status(401).send(error)
     return next(error)
@@ -23,6 +23,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+//POST --> /api/orders/
 router.post('/', async (req, res, next) => {
   try {
     const order = await Order.create(req.body)

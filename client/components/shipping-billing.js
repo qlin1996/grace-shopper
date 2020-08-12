@@ -12,11 +12,11 @@ class Shipping extends Component {
       shippingStreetAddress: '',
       shippingCity: '',
       shippingState: '',
-      shippingZipCode: '',
+      shippingZipCode: 0,
       billingStreetAddress: '',
       billingCity: '',
       billingState: '',
-      billingZipCode: ''
+      billingZipCode: 0
     }
     this.handleBillingChange = this.handleBillingChange.bind(this)
     this.handleSelectChange = this.handleSelectChange.bind(this)
@@ -36,6 +36,7 @@ class Shipping extends Component {
     })
   }
   handleSelectSubmit(event) {
+    event.preventDefault()
     this.props.updateUser(event.target.value, this.state)
   }
   render() {
@@ -48,11 +49,7 @@ class Shipping extends Component {
           {' '}
           Please Enter Shipping <br /> & Billing Information
         </p>
-        <form
-          onSubmit={this.handleSubmit}
-          name={name}
-          className="checkout-forms"
-        >
+        <form name={name} className="checkout-forms">
           <div>
             <label htmlFor="firstName">
               <small>First Name</small>
@@ -102,7 +99,7 @@ class Shipping extends Component {
             <label htmlFor="state">
               <small>State </small>
             </label>
-            <select id="select-state">
+            <select id="select-state" onChange={this.handleSelectChange}>
               <option value="AL" name="shippingState">
                 Alabama
               </option>
@@ -270,12 +267,10 @@ class Shipping extends Component {
             />
           </div>
         </form>
-        <form
-          name={name}
-          onClick={this.handleSelectSubmit}
-          className="yes-no-shipping"
-        >
+        <div name={name} className="yes-no-shipping">
           <p>Use Shipping info for Billing Info?</p>
+          <br />
+
           <select
             id="selected"
             onChange={this.handleBillingChange}
@@ -285,230 +280,245 @@ class Shipping extends Component {
 
             <option value="no">No</option>
           </select>
+          <br />
+
           {this.state.selectValue === 'no' ? (
-            <form className="billing-info-form">
+            <div>
+              <br />
+              <br />
               <p className="checkout-billing-header">
+                <br />
                 Please Enter Additional Billing Information
               </p>
-              <br />
-              <div>
-                <label htmlFor="billingStreetAddress">
-                  <small>Street</small>
-                </label>
-                <input
-                  name="billingStreetAddress"
-                  value={this.state.billingStreetAddress}
-                  onChange={this.handleSelectChange}
-                  type="text"
-                />
-              </div>
-              <div>
-                <label htmlFor="billingCity">
-                  <small>City</small>
-                </label>
-                <input
-                  name="billingCity"
-                  value={this.state.billingCity}
-                  onChange={this.handleSelectChange}
-                  type="text"
-                />
-              </div>
-              <div>
-                <label htmlFor="billingState">
-                  <small>State </small>
-                </label>
-                <select id="select-state">
-                  <option value="AL" name="billingState">
-                    Alabama
-                  </option>
-                  <option value="AK" name="billingState">
-                    Alaska
-                  </option>
-                  <option value="AZ" name="billingState">
-                    Arizona
-                  </option>
-                  <option value="AR" name="billingState">
-                    Arkansas
-                  </option>
-                  <option value="CA" name="billingState">
-                    California
-                  </option>
-                  <option value="CO" name="billingState">
-                    Colorado
-                  </option>
-                  <option value="CT" name="billingState">
-                    Connecticut
-                  </option>
-                  <option value="DE" name="billingState">
-                    Delaware
-                  </option>
-                  <option value="DC" name="billingState">
-                    District of Columbia
-                  </option>
-                  <option value="FL" name="billingState">
-                    Florida
-                  </option>
-                  <option value="GA" name="billingState">
-                    Georgia
-                  </option>
-                  <option value="HI" name="billingState">
-                    Hawaii
-                  </option>
-                  <option value="ID" name="billingState">
-                    Idaho
-                  </option>
-                  <option value="IL" name="billingState">
-                    Illinois
-                  </option>
-                  <option value="IN" name="billingState">
-                    Indiana
-                  </option>
-                  <option value="IA" name="billingState">
-                    Iowa
-                  </option>
-                  <option value="KS" name="billingState">
-                    Kansas
-                  </option>
-                  <option value="KY" name="billingState">
-                    Kentucky
-                  </option>
-                  <option value="LA" name="billingState">
-                    Louisiana
-                  </option>
-                  <option value="ME" name="billingState">
-                    Maine
-                  </option>
-                  <option value="MD" name="billingState">
-                    Maryland
-                  </option>
-                  <option value="MA" name="billingState">
-                    Massachusetts
-                  </option>
-                  <option value="MI" name="billingState">
-                    Michigan
-                  </option>
-                  <option value="MN" name="billingState">
-                    Minnesota
-                  </option>
-                  <option value="MS" name="billingState">
-                    Mississippi
-                  </option>
-                  <option value="MO" name="billingState">
-                    Missouri
-                  </option>
-                  <option value="MT" name="billingState">
-                    Montana
-                  </option>
-                  <option value="NE" name="billingState">
-                    Nebraska
-                  </option>
-                  <option value="NV" name="billingState">
-                    Nevada
-                  </option>
-                  <option value="NH" name="billingState">
-                    New Hampshire
-                  </option>
-                  <option value="NJ" name="billingState">
-                    New Jersey
-                  </option>
-                  <option value="NM" name="billingState">
-                    New Mexico
-                  </option>
-                  <option value="NY" name="billingState">
-                    New York
-                  </option>
-                  <option value="NC" name="billingState">
-                    North Carolina
-                  </option>
-                  <option value="ND" name="billingState">
-                    North Dakota
-                  </option>
-                  <option value="OH" name="billingState">
-                    Ohio
-                  </option>
-                  <option value="OK" name="billingState">
-                    Oklahoma
-                  </option>
-                  <option value="OR" name="billingState">
-                    Oregon
-                  </option>
-                  <option value="PA" name="billingState">
-                    Pennsylvania
-                  </option>
-                  <option value="RI" name="billingState">
-                    Rhode Island
-                  </option>
-                  <option value="SC" name="billingState">
-                    South Carolina
-                  </option>
-                  <option value="SD" name="billingState">
-                    South Dakota
-                  </option>
-                  <option value="TN" name="billingState">
-                    Tennessee
-                  </option>
-                  <option value="TX" name="billingState">
-                    Texas
-                  </option>
-                  <option value="UT" name="billingState">
-                    Utah
-                  </option>
-                  <option value="VT" name="billingState">
-                    Vermont
-                  </option>
-                  <option value="VA" name="billingState">
-                    Virginia
-                  </option>
-                  <option value="WA" name="billingState">
-                    Washington
-                  </option>
-                  <option value="WV" name="billingState">
-                    West Virginia
-                  </option>
-                  <option value="WI" name="billingState">
-                    Wisconsin
-                  </option>
-                  <option value="WY" name="billingState">
-                    Wyoming
-                  </option>
-                </select>
-              </div>
-              <div>
-                <label htmlFor="billingZipCode">
-                  <small>Zip Code</small>
-                </label>
-                <input
-                  name="billingZipCode"
-                  value={this.state.billingZipCode}
-                  onChange={this.handleSelectChange}
-                  type="text"
-                />
-              </div>
-              <div>
-                <button
-                  className="review-button-2"
-                  type="submit"
-                  onClick={this.handleSelectSubmit}
-                >
-                  Review Order
-                </button>
-              </div>
-            </form>
+              <form name={name} className="billing-info-form">
+                <div>
+                  <label htmlFor="billingStreetAddress">
+                    <small>Street</small>
+                  </label>
+                  <input
+                    name="billingStreetAddress"
+                    value={this.state.billingStreetAddress}
+                    onChange={this.handleSelectChange}
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="billingCity">
+                    <small>City</small>
+                  </label>
+                  <input
+                    name="billingCity"
+                    value={this.state.billingCity}
+                    onChange={this.handleSelectChange}
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="billingState">
+                    <small>State </small>
+                  </label>
+                  <select id="select-state" onChange={this.handleSelectChange}>
+                    <option value="AL" name="billingState">
+                      Alabama
+                    </option>
+                    <option value="AK" name="billingState">
+                      Alaska
+                    </option>
+                    <option value="AZ" name="billingState">
+                      Arizona
+                    </option>
+                    <option value="AR" name="billingState">
+                      Arkansas
+                    </option>
+                    <option value="CA" name="billingState">
+                      California
+                    </option>
+                    <option value="CO" name="billingState">
+                      Colorado
+                    </option>
+                    <option value="CT" name="billingState">
+                      Connecticut
+                    </option>
+                    <option value="DE" name="billingState">
+                      Delaware
+                    </option>
+                    <option value="DC" name="billingState">
+                      District of Columbia
+                    </option>
+                    <option value="FL" name="billingState">
+                      Florida
+                    </option>
+                    <option value="GA" name="billingState">
+                      Georgia
+                    </option>
+                    <option value="HI" name="billingState">
+                      Hawaii
+                    </option>
+                    <option value="ID" name="billingState">
+                      Idaho
+                    </option>
+                    <option value="IL" name="billingState">
+                      Illinois
+                    </option>
+                    <option value="IN" name="billingState">
+                      Indiana
+                    </option>
+                    <option value="IA" name="billingState">
+                      Iowa
+                    </option>
+                    <option value="KS" name="billingState">
+                      Kansas
+                    </option>
+                    <option value="KY" name="billingState">
+                      Kentucky
+                    </option>
+                    <option value="LA" name="billingState">
+                      Louisiana
+                    </option>
+                    <option value="ME" name="billingState">
+                      Maine
+                    </option>
+                    <option value="MD" name="billingState">
+                      Maryland
+                    </option>
+                    <option value="MA" name="billingState">
+                      Massachusetts
+                    </option>
+                    <option value="MI" name="billingState">
+                      Michigan
+                    </option>
+                    <option value="MN" name="billingState">
+                      Minnesota
+                    </option>
+                    <option value="MS" name="billingState">
+                      Mississippi
+                    </option>
+                    <option value="MO" name="billingState">
+                      Missouri
+                    </option>
+                    <option value="MT" name="billingState">
+                      Montana
+                    </option>
+                    <option value="NE" name="billingState">
+                      Nebraska
+                    </option>
+                    <option value="NV" name="billingState">
+                      Nevada
+                    </option>
+                    <option value="NH" name="billingState">
+                      New Hampshire
+                    </option>
+                    <option value="NJ" name="billingState">
+                      New Jersey
+                    </option>
+                    <option value="NM" name="billingState">
+                      New Mexico
+                    </option>
+                    <option value="NY" name="billingState">
+                      New York
+                    </option>
+                    <option value="NC" name="billingState">
+                      North Carolina
+                    </option>
+                    <option value="ND" name="billingState">
+                      North Dakota
+                    </option>
+                    <option value="OH" name="billingState">
+                      Ohio
+                    </option>
+                    <option value="OK" name="billingState">
+                      Oklahoma
+                    </option>
+                    <option value="OR" name="billingState">
+                      Oregon
+                    </option>
+                    <option value="PA" name="billingState">
+                      Pennsylvania
+                    </option>
+                    <option value="RI" name="billingState">
+                      Rhode Island
+                    </option>
+                    <option value="SC" name="billingState">
+                      South Carolina
+                    </option>
+                    <option value="SD" name="billingState">
+                      South Dakota
+                    </option>
+                    <option value="TN" name="billingState">
+                      Tennessee
+                    </option>
+                    <option value="TX" name="billingState">
+                      Texas
+                    </option>
+                    <option value="UT" name="billingState">
+                      Utah
+                    </option>
+                    <option value="VT" name="billingState">
+                      Vermont
+                    </option>
+                    <option value="VA" name="billingState">
+                      Virginia
+                    </option>
+                    <option value="WA" name="billingState">
+                      Washington
+                    </option>
+                    <option value="WV" name="billingState">
+                      West Virginia
+                    </option>
+                    <option value="WI" name="billingState">
+                      Wisconsin
+                    </option>
+                    <option value="WY" name="billingState">
+                      Wyoming
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="billingZipCode">
+                    <small>Zip Code</small>
+                  </label>
+                  <input
+                    name="billingZipCode"
+                    value={this.state.billingZipCode}
+                    onClick={this.handleSelectChange}
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <button
+                    type="button"
+                    className="save-info-button"
+                    value={userId}
+                    onClick={this.handleSelectSubmit}
+                  >
+                    My Order Info is Correct
+                  </button>
+                  <Link to="/review-order">
+                    <button className="review-button" type="button">
+                      Review Order
+                    </button>
+                  </Link>
+                </div>
+              </form>
+            </div>
           ) : (
             <div>
               <Link to="/review-order">
-                <button
-                  className="review-button"
-                  type="submit"
-                  value={userId}
-                  onClick={this.handleSelectSubmit}
-                >
+                <button type="button" className="review-button">
                   Review Order
                 </button>
               </Link>
+              <button
+                className="save-info-button"
+                type="button"
+                value={userId}
+                onClick={this.handleSelectSubmit}
+              >
+                My Order Info is Correct
+              </button>
             </div>
           )}
-        </form>
+        </div>
       </div>
     )
   }

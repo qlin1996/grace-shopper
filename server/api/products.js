@@ -68,11 +68,7 @@ router.delete('/:id', isAdmin, async (req, res, next) => {
 //PATCH --> /api/products/:id
 router.patch('/:id', async (req, res, next) => {
   try {
-    const productObj = {}
-    if (req.body.quantityInStock) {
-      productObj.quantityInStock = req.body.quantityInStock
-    }
-    await Product.update(productObj, {
+    await Product.update(req.body, {
       where: {
         id: req.params.id
       }

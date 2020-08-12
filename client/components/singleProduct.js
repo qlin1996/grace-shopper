@@ -5,14 +5,17 @@ import {
   putProduct,
   destroyProduct
 } from '../store/singleProduct'
-import {addToCart} from '../store/shoppingCart'
+
 import {getUserInfo} from '../store/user'
 
+import {addToCart} from '../store/shoppingCart'
+import {render} from 'enzyme'
 class Product extends Component {
   constructor() {
     super()
     this.state = {
-      quantity: 1
+      quantity: 1,
+      toastNotification: 'false'
     }
   }
   componentDidMount() {
@@ -34,8 +37,10 @@ class Product extends Component {
       productId: this.props.product.id,
       orderId: 1
     })
+    this.setState({
+      toastNotification: 'true'
+    })
   }
-
   handleDelete = event => {
     event.preventDefault()
     this.props.deleteProduct(this.props.match.params.id)
@@ -62,6 +67,11 @@ class Product extends Component {
   }
 
   render() {
+    console.log('this.state.quantity', this.state.quantity)
+    console.log(
+      'this.props.product.quantityInStock',
+      this.props.product.quantityInStock
+    )
     const product = this.props.product
     const admin = this.props.user.isAdmin
 
@@ -79,8 +89,8 @@ class Product extends Component {
         <input
           type="number"
           name="quantity"
-          max="10"
-          min="0"
+          max={this.props.product.quantityInStock}
+          min="1"
           value={this.state.quantity}
           onChange={this.handleChange}
         />
@@ -154,6 +164,24 @@ class Product extends Component {
                   </label>
                   <button type="submit">Submit</button>
                 </form>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div />
+        )}
+        {this.state.toastNotification === 'true' ? (
+          <div>
+            <div className="cart-toast-notification">{this.state.quantity}</div>
+            <div>
+              <div className="toast-notification">
+                <p>
+                  {' '}
+                  Adding
+                  <p className="toast-text">{`${this.state.quantity}`}</p> of
+                  <p className="toast-text">{`${this.props.product.name}`}</p>
+                  to your cart
+                </p>
               </div>
             </div>
           </div>
