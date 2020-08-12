@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {getCartItems} from '../store/shoppingCart'
 
-
 const Navbar = ({handleClick, user, isLoggedIn, cart, getItems}) => {
   //HARD CODE ORDER ID
   const orderId = 1
@@ -28,12 +27,7 @@ const Navbar = ({handleClick, user, isLoggedIn, cart, getItems}) => {
             <Link to="/shipping-billing">Shipping</Link>
             <Link to="/about">About Us</Link>
             <Link to="/cart">
-              Cart{' '}
-              {cart.products ? (
-                <h1>{cart.products.length}</h1>
-              ) : (
-                <h1>IT DIDNT WORK</h1>
-              )}
+              Cart {cart.products ? <h1>{cart.products.length}</h1> : <h1 />}
             </Link>
             <Link to="/all-users">Edit Users</Link>
             <a href="/home" onClick={handleClick}>
