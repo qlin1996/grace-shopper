@@ -6,8 +6,8 @@ import CartItem from './cart-items'
 import {getNewOrder} from '../store/order'
 class Cart extends Component {
   componentDidMount() {
-    // ORDERID IS HARDCODED RN.
-    this.props.getNewOrder(this.props.user.id)
+    // ORDERID IS HARDCODED RN. NEED TO PASS DOWN AND REPLACE.
+
     this.props.getItems(1)
   }
 
@@ -15,6 +15,18 @@ class Cart extends Component {
     console.log('THIS PROPS', this.props)
 
     const products = this.props.cart.products || []
+
+    // console.log('products >>> ', products);
+
+    // const data = JSON.stringify(products);
+
+    // console.log('data >>> ', data);
+
+    // localStorage.setItem('data', data);
+    // const savedInfo = JSON.parse(localStorage.getItem('data'));
+
+    // console.log('savedInfo >>> ', savedInfo);
+
     return (
       <div>
         <h1>Cart</h1>

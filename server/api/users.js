@@ -4,7 +4,7 @@ module.exports = router
 
 //protection A.K.A. isAdmin
 const isAdmin = (req, res, next) => {
-  if (!User.user && !User.isAdmin) {
+  if (User.isAdmin === 'no') {
     const error = new Error("you can't hack us")
     res.status(401).send(error)
     return next(error)
@@ -46,7 +46,7 @@ router.get('/', isAdmin, isLoggedIn, async (req, res, next) => {
 router.get('/:userId', isAdmin, isLoggedIn, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId)
-    if (!user) {
+    if (!user || User.isAdmin === 'no') {
       const err = Error('Credientials not found')
       err.status = 404
       return next(err) // or `throw err`
@@ -75,7 +75,7 @@ router.put('/:userId', async (req, res, next) => {
   }
 })
 
-//POST --> /api/users
+//POST --> /api.users
 router.post('/', isAdmin, isLoggedIn, async (req, res, next) => {
   try {
     const newUser = await User.create(req.body)

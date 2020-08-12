@@ -86,7 +86,6 @@ const AuthForm = props => {
           <div className="welcome-div row justify-content-center">
             <p className="welcome-header"> Welcome Back!</p>
           </div>
-          >
           <form name={name} className="auth-forms" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email">

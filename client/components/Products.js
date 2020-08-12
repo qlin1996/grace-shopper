@@ -2,13 +2,48 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchProducts} from '../store/products'
 import {Link} from 'react-router-dom'
-// import getUserInfo from '../store/user.js'
+import {getUserInfo} from '../store/user'
 
 class Products extends Component {
+  constructor() {
+    super()
+    this.state = {
+      currentPageNum: 1,
+      productsPerPage: 5
+    }
+    this.paginate = this.paginate.bind(this)
+  }
+
   componentDidMount() {
     this.props.getProducts()
+    this.props.getUser(this.props.user.id)
+  }
+  paginate(pageNum) {
+    this.setState(prevState => ({
+      currentPageNum: pageNum,
+      productsPerPage: prevState.productsPerPage
+    }))
   }
   render() {
+    // products per page
+    const indexOfLastProduct =
+      this.state.currentPageNum * this.state.productsPerPage
+    const indexOfFirstProduct = indexOfLastProduct - this.state.productsPerPage
+    const currentProductsOnPage = this.props.products.slice(
+      indexOfFirstProduct,
+      indexOfLastProduct
+    )
+
+    // all page numbers
+    const allPageNumbers = []
+    for (
+      let i = 1;
+      i <= Math.ceil(this.props.products.length / this.state.productsPerPage);
+      i++
+    ) {
+      allPageNumbers.push(i)
+    }
+    const admin = this.props.user.isAdmin
     return (
       <div>
         <div className="row justify-content-center">
@@ -24,7 +59,7 @@ class Products extends Component {
           <h3 className="welcome-text">VIEW ALL PRODUCTS</h3>
         </div>
         <div className="row products-row p-4">
-          {this.props.products.map((product, index) => {
+          {currentProductsOnPage.map((product, index) => {
             let backgroundColors = [
               'individual-product-color-1',
               'individual-product-color-2',
@@ -49,6 +84,29 @@ class Products extends Component {
               </div>
             )
           })}
+
+          <div className="paginate-div">
+            <p>Page ☛ </p>
+            <p> </p>
+            {allPageNumbers.map(number => (
+              <p
+                className="paginate-pages"
+                key={number}
+                onClick={() => this.paginate(number)}
+              >
+                {number} ⇾
+              </p>
+            ))}
+          </div>
+          {admin === 'yes' ? (
+            <div>
+              <Link to="/new-product" id="sign-up">
+                Add New Product
+              </Link>
+            </div>
+          ) : (
+            <div />
+          )}
         </div>
       </div>
     )
@@ -59,11 +117,13 @@ class Products extends Component {
 // and make sure that it links to the newProduct component
 
 const mapToState = state => ({
-  products: state.products
+  products: state.products,
+  user: state.user
 })
 
 const mapDispatch = dispatch => ({
-  getProducts: () => dispatch(fetchProducts())
+  getProducts: () => dispatch(fetchProducts()),
+  getUser: userId => dispatch(getUserInfo(userId))
 })
 
 export default connect(mapToState, mapDispatch)(Products)
