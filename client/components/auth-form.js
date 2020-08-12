@@ -113,7 +113,9 @@ const AuthForm = props => {
               <br />
               <br />
               <Link to="/signup" id="sign-up">
-                SIGN UP
+                <button type="button" className="login-2">
+                  SIGN UP{' '}
+                </button>
               </Link>
             </div>
             <br />

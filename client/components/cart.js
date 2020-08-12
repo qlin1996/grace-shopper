@@ -29,7 +29,7 @@ class Cart extends Component {
 
     return (
       <div>
-        <h1>Cart</h1>
+        <h1 className="cartTotal-1">Cart</h1>
 
         {products.map(product => {
           return (
@@ -39,7 +39,7 @@ class Cart extends Component {
           )
         })}
 
-        <h3>
+        <h3 className="cartTotal">
           Cart's Total: $
           {products.reduce(
             (accum, currentVal) =>
@@ -50,10 +50,14 @@ class Cart extends Component {
 
         {products.length ? (
           <Link to="./shipping-billing">
-            <button type="button">Checkout</button>
+            <button type="button" className="checkout-1">
+              Checkout
+            </button>
           </Link>
         ) : (
-          <button type="button">Checkout</button>
+          <button type="button" className="checkout-1">
+            Checkout
+          </button>
         )}
       </div>
     )

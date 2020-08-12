@@ -77,7 +77,7 @@ class Product extends Component {
     const admin = this.props.user.isAdmin
 
     return (
-      <div className="individual-product">
+      <div className="individual-product individual-product-color-1">
         <h1 className="text-effects"> Name: {product.name}</h1>
         <img src={product.imageUrl} />
         <h3 className="text-effects"> Price: {product.price}</h3>
