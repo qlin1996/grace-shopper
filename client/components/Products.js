@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchProducts} from '../store/products'
 import {Link} from 'react-router-dom'
-import getUserInfo from '../store/user.js'
+import {getUserInfo} from '../store/user'
 
 class Products extends Component {
   constructor() {
@@ -16,7 +16,7 @@ class Products extends Component {
 
   componentDidMount() {
     this.props.getProducts()
-    console.log(this.props, 'PROPS')
+    this.props.getUser(this.props.user.id)
   }
 
   paginate(pageNum) {
@@ -45,7 +45,7 @@ class Products extends Component {
     ) {
       allPageNumbers.push(i)
     }
-
+    const admin = this.props.user.isAdmin
     return (
       <div>
         <br />
@@ -71,12 +71,20 @@ class Products extends Component {
             </div>
           )
         })}
-
         {allPageNumbers.map(number => (
           <p key={number} onClick={() => this.paginate(number)}>
             {number}
           </p>
         ))}
+        {admin === 'yes' ? (
+          <div>
+            <Link to="/new-product" id="sign-up">
+              Add New Product
+            </Link>
+          </div>
+        ) : (
+          <div />
+        )}
       </div>
     )
   }
@@ -86,11 +94,13 @@ class Products extends Component {
 // and make sure that it links to the newProduct component
 
 const mapToState = state => ({
-  products: state.products
+  products: state.products,
+  user: state.user
 })
 
 const mapDispatch = dispatch => ({
-  getProducts: () => dispatch(fetchProducts())
+  getProducts: () => dispatch(fetchProducts()),
+  getUser: userId => dispatch(getUserInfo(userId))
 })
 
 export default connect(mapToState, mapDispatch)(Products)

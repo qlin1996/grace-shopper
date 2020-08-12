@@ -48,7 +48,7 @@ router.post('/', isAdmin, async (req, res, next) => {
 router.put('/:id', isAdmin, async (req, res, next) => {
   try {
     const item = await Product.findByPk(req.params.id)
-    const updatedItem = item.update(req.body)
+    const updatedItem = await item.update(req.body)
     res.json(updatedItem)
   } catch (error) {
     next(error)

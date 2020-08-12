@@ -8,6 +8,8 @@ const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const UPDATE_CURRENT_USER = 'UPDATE_CURRENT_USER'
 const ADD_USER = 'ADD_USER'
+const UPDATE_USER_ADMIN = 'UPDATE_USER_ADMIN'
+const GET_USER_DATA = 'GET_USER_DATA'
 /**
  * INITIAL STATE
  */
@@ -19,14 +21,40 @@ const defaultUser = {}
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 const updateCurrentUser = user => ({type: UPDATE_CURRENT_USER, user})
+const updateUserAdmin = (id, newInfo) => ({
+  type: UPDATE_USER_ADMIN,
+  id,
+  newInfo
+})
+
+const getUserData = user => ({type: GET_USER_DATA})
 
 /**
  * THUNK CREATORS
  */
+
+export const getUserDataThunk = userId => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/users/${userId}`)
+    return data
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const putUser = (id, newInfo) => async dispatch => {
+  try {
+    const {data} = await axios.put(`/api/users/${id}`, newInfo)
+    return dispatch(updateUserAdmin(id, data))
+  } catch (error) {
+    console.log(error)
+  }
+}
 export const getUserInfo = userId => async dispatch => {
   try {
-    // const res = await axios.get(`api/users/${userId}`)
-    dispatch(getUser(res.data || defaultUser))
+    const {data} = await axios.get(`/api/users/${userId}`)
+
+    return dispatch(getUser(data))
   } catch (err) {
     console.error(err)
   }
@@ -54,8 +82,8 @@ export const auth1 = (email, password, method) => async dispatch => {
   }
 
   try {
-    dispatch(getUser(res.data))
     history.push('/home')
+    return dispatch(getUser(res.data))
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
@@ -76,12 +104,12 @@ export const auth2 = (
       lastName
     })
   } catch (authError) {
-    return dispatch(getUser({error: authError}))
+    dispatch(getUser({error: authError}))
   }
 
   try {
-    dispatch(getUser(res.data))
     history.push('/home')
+    return dispatch(getUser(res.data))
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
@@ -90,8 +118,8 @@ export const auth2 = (
 export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')
-    dispatch(removeUser())
     history.push('/login')
+    return dispatch(removeUser())
   } catch (err) {
     console.error(err)
   }
@@ -100,7 +128,7 @@ export const logout = () => async dispatch => {
 export const updateUser = (id, body) => async dispatch => {
   try {
     const {data} = await axios.put(`/api/users/${id}`, body)
-    dispatch(updateCurrentUser(data))
+    return dispatch(updateCurrentUser(data))
   } catch (error) {
     console.error(error)
   }
@@ -108,7 +136,7 @@ export const updateUser = (id, body) => async dispatch => {
 /**
  * REDUCER
  */
-export default function(state = defaultUser, action) {
+export default function userReducer(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
       return action.user
@@ -116,6 +144,8 @@ export default function(state = defaultUser, action) {
       return defaultUser
     case UPDATE_CURRENT_USER:
       return action.user
+    case UPDATE_USER_ADMIN:
+      return action.newInfo
     case ADD_USER:
       return [...state, action.user]
     default:

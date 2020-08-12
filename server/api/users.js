@@ -4,7 +4,7 @@ module.exports = router
 
 //protection A.K.A. isAdmin
 const isAdmin = (req, res, next) => {
-  if (!User.user && !User.isAdmin) {
+  if (User.isAdmin === 'no') {
     const error = new Error("you can't hack us")
     res.status(401).send(error)
     return next(error)
@@ -13,8 +13,20 @@ const isAdmin = (req, res, next) => {
   }
 }
 
+const isLoggedIn = (req, res, next) => {
+  if (!User) {
+    const error = new Error(
+      'You are not authorized to Access the requested information'
+    )
+    res.status(401).send(error)
+    return next(error)
+  } else {
+    next()
+  }
+}
+
 //GET --> /api/users
-router.get('/', isAdmin, async (req, res, next) => {
+router.get('/', isAdmin, isLoggedIn, async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and email fields - even though
@@ -31,10 +43,10 @@ router.get('/', isAdmin, async (req, res, next) => {
 // ONLY ALLOW ADMINS AND THAT SPECIFC USER TO GET/EDIT USER FILE
 
 //GET --> /api/users/:userId
-router.get('/:userId', async (req, res, next) => {
+router.get('/:userId', isAdmin, isLoggedIn, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId)
-    if (!user) {
+    if (!user || User.isAdmin === 'no') {
       const err = Error('Credientials not found')
       err.status = 404
       return next(err) // or `throw err`
@@ -52,7 +64,6 @@ router.put('/:userId', async (req, res, next) => {
       where: {
         id: req.params.userId
       }
-      // include: Order // ??
     })
       .then(user => user.update(req.body))
       .then(user => {
@@ -64,8 +75,8 @@ router.put('/:userId', async (req, res, next) => {
   }
 })
 
-//POST --> /api/users
-router.post('/', async (req, res, next) => {
+//POST --> /api.users
+router.post('/', isAdmin, isLoggedIn, async (req, res, next) => {
   try {
     const newUser = await User.create(req.body)
     res.json(newUser)
