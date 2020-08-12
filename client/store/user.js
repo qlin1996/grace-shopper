@@ -9,6 +9,7 @@ const REMOVE_USER = 'REMOVE_USER'
 const UPDATE_CURRENT_USER = 'UPDATE_CURRENT_USER'
 const ADD_USER = 'ADD_USER'
 const UPDATE_USER_ADMIN = 'UPDATE_USER_ADMIN'
+const GET_USER_DATA = 'GET_USER_DATA'
 /**
  * INITIAL STATE
  */
@@ -26,9 +27,20 @@ const updateUserAdmin = (id, newInfo) => ({
   newInfo
 })
 
+const getUserData = user => ({type: GET_USER_DATA})
+
 /**
  * THUNK CREATORS
  */
+
+export const getUserDataThunk = userId => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/users/${userId}`)
+    return data
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 export const putUser = (id, newInfo) => async dispatch => {
   try {
@@ -40,8 +52,9 @@ export const putUser = (id, newInfo) => async dispatch => {
 }
 export const getUserInfo = userId => async dispatch => {
   try {
-    const {data} = await axios.get(`api/users/${userId}`)
-    dispatch(getUser(data || defaultUser))
+    const {data} = await axios.get(`/api/users/${userId}`)
+
+    return dispatch(getUser(data))
   } catch (err) {
     console.error(err)
   }
@@ -69,8 +82,8 @@ export const auth1 = (email, password, method) => async dispatch => {
   }
 
   try {
-    dispatch(getUser(res.data))
     history.push('/home')
+    return dispatch(getUser(res.data))
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
@@ -91,12 +104,12 @@ export const auth2 = (
       lastName
     })
   } catch (authError) {
-    return dispatch(getUser({error: authError}))
+    dispatch(getUser({error: authError}))
   }
 
   try {
-    dispatch(getUser(res.data))
     history.push('/home')
+    return dispatch(getUser(res.data))
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
@@ -105,8 +118,8 @@ export const auth2 = (
 export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')
-    dispatch(removeUser())
     history.push('/login')
+    return dispatch(removeUser())
   } catch (err) {
     console.error(err)
   }
@@ -115,7 +128,7 @@ export const logout = () => async dispatch => {
 export const updateUser = (id, body) => async dispatch => {
   try {
     const {data} = await axios.put(`/api/users/${id}`, body)
-    dispatch(updateCurrentUser(data))
+    return dispatch(updateCurrentUser(data))
   } catch (error) {
     console.error(error)
   }
@@ -123,7 +136,7 @@ export const updateUser = (id, body) => async dispatch => {
 /**
  * REDUCER
  */
-export default function(state = defaultUser, action) {
+export default function userReducer(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
       return action.user

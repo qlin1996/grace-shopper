@@ -12,7 +12,7 @@ const Navbar = ({handleClick, user, isLoggedIn}) => {
     <div>
       <img src="/full-logo.png" alt="image" className="nav-logo" />
       <nav>
-        {isLoggedIn ? (
+        {isLoggedIn && admin === 'yes' ? (
           <div>
             {/* The navbar will show these links after you log in */}
             <Link to="/home">Home</Link>
@@ -20,13 +20,18 @@ const Navbar = ({handleClick, user, isLoggedIn}) => {
             <Link to="/shipping-billing">Shipping</Link>
             <Link to="/about">About Us</Link>
             <Link to="/cart">Cart</Link>
-            {admin === 'yes' ? (
-              <Link to="/all-users">Edit Users</Link>
-            ) : (
-              <div>
-                <h1>TEST</h1>
-              </div>
-            )}
+            <Link to="/all-users">Edit Users</Link>
+            <a href="/home" onClick={handleClick}>
+              Logout
+            </a>
+          </div>
+        ) : isLoggedIn && admin === 'no' ? (
+          <div>
+            <Link to="/home">Home</Link>
+            <Link to="/products">Products</Link>
+            <Link to="/shipping-billing">Shipping</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/cart">Cart</Link>
             <a href="/home" onClick={handleClick}>
               Logout
             </a>

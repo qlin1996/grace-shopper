@@ -1,14 +1,22 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {getUserInfo, updateUser} from '../store/user'
+import {getUserInfo, updateUser, getUserDataThunk} from '../store/user'
 
 export class SingleUser extends Component {
   constructor() {
     super()
+    this.state = {
+      editUser: {}
+    }
   }
-  componentDidMount() {
-    const userId = this.props.match.params.id
-    this.props.getUser(userId)
+  async componentDidMount() {
+    try {
+      const value = await this.props.getUserData(this.props.match.params.id)
+      console.log('value >>>> ', value)
+      this.setState({editUser: value})
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   handleChange = event => {
@@ -33,30 +41,29 @@ export class SingleUser extends Component {
     const shippingCity = event.target.shippingCity.value
     const shippingState = event.target.shippingState.value
     const shippingZipCode = event.target.shippingZip.value
-
-    const userId = this.props.match.params.id
-
-    this.props.putUser(userId, {
-      email,
-      firstName,
-      lastName,
-      billingStreetAddress,
-      billingCity,
-      billingState,
-      billingZipCode,
-      shippingStreetAddress,
-      shippingCity,
-      shippingState,
-      shippingZipCode,
-      isAdmin,
-      isGuest,
-      password
+    this.setState({
+      editUser: {
+        email,
+        firstName,
+        lastName,
+        billingStreetAddress,
+        billingCity,
+        billingState,
+        billingZipCode,
+        shippingStreetAddress,
+        shippingCity,
+        shippingState,
+        shippingZipCode,
+        isAdmin,
+        isGuest,
+        password
+      }
     })
   }
 
   render() {
-    const user = this.props.user || {}
-    console.log('user >>> ', user)
+    const user = this.state.editUser || {}
+    console.log('editUser >>> ', user)
     return (
       <div>
         <div>
@@ -78,71 +85,123 @@ export class SingleUser extends Component {
         <div>
           <h1> Update {user.firstName}'s Information</h1>
           <div>
-            {/* <form onSubmit={this.handleUpdate}>
-							<label>
-								First Name of User
-								<input type="text" name="firstName" onChange={this.handleChange} />
-							</label>
+            <form onSubmit={this.handleUpdate}>
+              <label>
+                First Name of User
+                <input
+                  type="text"
+                  name="firstName"
+                  onChange={this.handleChange}
+                />
+              </label>
 
-							<label>
-								Last Name of User
-								<input type="text" name="lastName" onChange={this.handleChange} />
-							</label>
+              <label>
+                Last Name of User
+                <input
+                  type="text"
+                  name="lastName"
+                  onChange={this.handleChange}
+                />
+              </label>
 
-							<label>
-								Email of User
-								<input type="text" name="email" onChange={this.handleChange} />
-							</label>
+              <label>
+                Email of User
+                <input type="text" name="email" onChange={this.handleChange} />
+              </label>
 
-							<label>
-								Password of User
-								<input type="text" name="password" onChange={this.handleChange} />
-							</label>
+              <label>
+                Password of User
+                <input
+                  type="text"
+                  name="password"
+                  onChange={this.handleChange}
+                />
+              </label>
 
-							<label>
-								Admin Status
-								<input type="text" name="adminStatus" onChange={this.handleChange} />
-							</label>
+              <label>
+                Admin Status
+                <input
+                  type="text"
+                  name="adminStatus"
+                  onChange={this.handleChange}
+                />
+              </label>
 
-							<label>
-								Guest Status
-								<input type="text" name="guestStatus" onChange={this.handleChange} />
-							</label>
-							<label>
-								Shipping Street Address
-								<input type="text" name="shippingAddress" onChange={this.handleChange} />
-							</label>
-							<label>
-								Shipping City
-								<input type="text" name="shippingCity" onChange={this.handleChange} />
-							</label>
-							<label>
-								Shipping State
-								<input type="text" name="shippingState" onChange={this.handleChange} />
-							</label>
-							<label>
-								Shipping Zip Code
-								<input type="text" name="shippingZip" onChange={this.handleChange} />
-							</label>
-							<label>
-								Billing Street Address
-								<input type="text" name="billingAddress" onChange={this.handleChange} />
-							</label>
-							<label>
-								Billing City
-								<input type="text" name="billingCity" onChange={this.handleChange} />
-							</label>
-							<label>
-								Billing State
-								<input type="text" name="billingState" onChange={this.handleChange} />
-							</label>
-							<label>
-								Billing Zip Code
-								<input type="text" name="billingZip" onChange={this.handleChange} />
-							</label>
+              <label>
+                Guest Status
+                <input
+                  type="text"
+                  name="guestStatus"
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Shipping Street Address
+                <input
+                  type="text"
+                  name="shippingAddress"
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Shipping City
+                <input
+                  type="text"
+                  name="shippingCity"
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Shipping State
+                <input
+                  type="text"
+                  name="shippingState"
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Shipping Zip Code
+                <input
+                  type="text"
+                  name="shippingZip"
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Billing Street Address
+                <input
+                  type="text"
+                  name="billingAddress"
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Billing City
+                <input
+                  type="text"
+                  name="billingCity"
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Billing State
+                <input
+                  type="text"
+                  name="billingState"
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Billing Zip Code
+                <input
+                  type="text"
+                  name="billingZip"
+                  onChange={this.handleChange}
+                />
+              </label>
 
-							<button type="submit">Submit</button>
-						</form> */}
+              <button type="submit">Submit</button>
+            </form>
           </div>
         </div>
       </div>
@@ -150,13 +209,15 @@ export class SingleUser extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user
-})
+const mapStateToProps = state => {
+  console.log('state >>>  in mapstatetoprops before return >>> ', state)
+  return {user: state.user}
+}
 
 const mapDispatchToProps = dispatch => ({
   getUser: userId => dispatch(getUserInfo(userId)),
-  putUser: (userId, newInfo) => dispatch(updateUser(userId, newInfo))
+  putUser: (userId, newInfo) => dispatch(updateUser(userId, newInfo)),
+  getUserData: userId => dispatch(getUserDataThunk(userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleUser)

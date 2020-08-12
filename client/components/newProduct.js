@@ -12,7 +12,8 @@ class NewProduct extends Component {
 
   componentDidMount() {
     // hard coded user for now. need to pass down userId
-    this.props.getUser(3)
+
+    this.props.getUser(this.props.user.id)
   }
 
   handleChange(event) {

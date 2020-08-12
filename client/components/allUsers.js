@@ -4,8 +4,12 @@ import {Link} from 'react-router-dom'
 import {getUsersInfo} from '../store/users'
 
 export class AllUsers extends React.Component {
-  componentDidMount() {
-    this.props.getUsers()
+  async componentDidMount() {
+    try {
+      await this.props.getUsers()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   render() {

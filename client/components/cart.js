@@ -7,23 +7,24 @@ import CartItem from './cart-items'
 class Cart extends Component {
   componentDidMount() {
     // ORDERID IS HARDCODED RN. NEED TO PASS DOWN AND REPLACE.
-    this.props.getItems(1)
+
+    this.props.getItems(this.props.cart.userId)
   }
 
   render() {
     console.log('THIS IS THE CART THAT IS GIVING US PROBLEMS', this.props.cart)
     const products = this.props.cart.products || []
 
-    console.log('products >>> ', products)
+    // console.log('products >>> ', products);
 
-    const data = JSON.stringify(products)
+    // const data = JSON.stringify(products);
 
-    console.log('data >>> ', data)
+    // console.log('data >>> ', data);
 
-    localStorage.setItem('data', data)
-    const savedInfo = JSON.parse(localStorage.getItem('data'))
+    // localStorage.setItem('data', data);
+    // const savedInfo = JSON.parse(localStorage.getItem('data'));
 
-    console.log('savedInfo >>> ', savedInfo)
+    // console.log('savedInfo >>> ', savedInfo);
 
     return (
       <div>
