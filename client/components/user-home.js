@@ -33,16 +33,18 @@ class UserHome extends Component {
     })
 
     const user = this.props.user
-    const {email} = this.props
+    // const {email} = this.props
     return (
       <div>
-        {user.firstName ? (
-          <h3>
-            Welcome, {user.firstName} {user.lastName}
-          </h3>
-        ) : (
-          <h3>Welcome, {email}</h3>
-        )}
+        <div className="welcome-div">
+          {user.firstName ? (
+            <h3 className="welcome-text">
+              Welcome, {user.firstName} {user.lastName}
+            </h3>
+          ) : (
+            <h3 className="welcome-text">Welcome, Guest</h3>
+          )}
+        </div>
         <img src="/icon-logo.png" alt="image" className="icon-logo" />
         <div className="sidebar-buttons-div">
           <button

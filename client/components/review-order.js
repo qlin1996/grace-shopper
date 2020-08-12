@@ -4,14 +4,16 @@ import {getUserInfo} from '../store/user'
 import {Link} from 'react-router-dom'
 import {updateQuantityInStock} from '../store/singleProduct'
 import {getCartItems} from '../store/shoppingCart'
-import {submitOrderAndUpdate} from '../store/order'
+import {submitOrderAndUpdate, getNewOrder} from '../store/order'
+import {postNewOrder} from '../store/orders'
 
 class ReviewOrder extends Component {
   componentDidMount() {
     // hard coded user for now. need to pass down userId
     this.props.getUser(this.props.user.id)
     // hard coded oderId for now. need to pass down orderId
-    this.props.getItems(1)
+    this.props.getNewOrder(this.props.user.id)
+    this.props.getItems(this.props.user.id)
   }
 
   handleClick = () => {
@@ -31,11 +33,14 @@ class ReviewOrder extends Component {
       isFulfilled: 'yes',
       totalPrice: totalInInteger
     })
+    this.props.postOrder({
+      userId: this.props.user.id
+    })
   }
 
   render() {
     const user = this.props.user
-    console.log('USER', user)
+    console.log(this.props, 'UPDATED PROPS')
     const products = this.props.cart.products || []
     const totalInInteger = products.reduce(
       (accum, currentVal) =>
@@ -108,7 +113,8 @@ class ReviewOrder extends Component {
 
 const mapToState = state => ({
   user: state.user,
-  cart: state.cart
+  cart: state.cart,
+  order: state.order
 })
 
 const mapToDispatch = dispatch => ({
@@ -117,7 +123,9 @@ const mapToDispatch = dispatch => ({
   updateQuantityInStock: (id, updatedQuantity) =>
     dispatch(updateQuantityInStock(id, updatedQuantity)),
   submitOrderAndUpdate: (id, updatedOrderObj) =>
-    dispatch(submitOrderAndUpdate(id, updatedOrderObj))
+    dispatch(submitOrderAndUpdate(id, updatedOrderObj)),
+  postOrder: order => dispatch(postNewOrder(order)),
+  getNewOrder: userId => dispatch(getNewOrder(userId))
 })
 
 export default connect(mapToState, mapToDispatch)(ReviewOrder)

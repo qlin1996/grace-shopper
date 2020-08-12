@@ -6,16 +6,28 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <img src="/full-logo.png" alt="image" className="nav-logo" />
+    <Link to="/home">
+      <img src="/full-logo.png" alt="image" className="nav-logo" />
+    </Link>
     <nav>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/products">Products</Link>
-          <Link to="/bestSellers">Best Sellers</Link>
-          <Link to="/shipping-billing">Shipping</Link>
-          <Link to="/about">About Us</Link>
+          <Link to="/home" className="nav-a-text">
+            Home
+          </Link>
+          <Link to="/products" className="nav-a-text">
+            Products
+          </Link>
+          <Link to="/bestSellers" className="nav-a-text">
+            Best Sellers
+          </Link>
+          <Link to="/shipping-billing" className="nav-a-text">
+            Shipping
+          </Link>
+          <Link to="/about" className="nav-a-text">
+            About Us
+          </Link>
           <Link to="/cart">
             <img
               className="cart-image"
@@ -30,11 +42,21 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/products">Products</Link>
-          <Link to="/shipping-billing">Shipping</Link>
-          <Link to="/login">LOGIN ⇋ SIGNUP</Link>
-          <Link to="/about">About Us</Link>
+          <Link to="/home" className="nav-a-text">
+            Home
+          </Link>
+          <Link to="/products" className="nav-a-text">
+            Products
+          </Link>
+          <Link to="/shipping-billing" className="nav-a-text">
+            Shipping
+          </Link>
+          <Link to="/login" className="nav-a-text">
+            LOGIN ⇋ SIGNUP
+          </Link>
+          <Link to="/about" className="nav-a-text">
+            About Us
+          </Link>
           <Link to="/cart">
             <img
               className="cart-image"

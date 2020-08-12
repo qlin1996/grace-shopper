@@ -14,7 +14,7 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
-  font-size: 18px;
+  font-size: 20px;
   color: black;
   text-transform: uppercase;
   font-family: 'Lucida Console', Monaco, monospace;
@@ -25,6 +25,11 @@ nav a {
     0 20px 20px rgba(0, 0, 0, 0.15);
 }
 
+.nav-a-text:hover {
+  /* On mouse-over, make the elements appear as they should */
+  color: darkblue;
+  transform: scale(1.2);
+}
 /* CSS FOR NAVBAR AND LOGO */
 form div {
   margin: 1em;
@@ -44,6 +49,19 @@ img {
   width: 340px;
   height: 115px;
 }
+
+.nav-logo:hover {
+  animation: bounce 2.5s infinite;
+}
+@-webkit-keyframes bounce {
+  0%,
+  100% {
+    -webkit-transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-6px);
+  }
+}
 .icon-logo {
   width: 160px;
   height: 60px;
@@ -51,13 +69,20 @@ img {
   left: 48%;
 }
 .cart-image {
-  width: 60px;
-  height: 50px;
+  width: 70px;
+  height: 60px;
   position: absolute;
-  left: 95%;
+  left: 93%;
   top: 12%;
 }
 
+cart-image:hover {
+  width: 70px;
+  height: 60px;
+  position: absolute;
+  left: 93%;
+  top: 12%;
+}
 /* CSS FOR USER LOGIN AND SIGNUP COMPONENTS */
 .auth-forms {
   padding: 35px;
@@ -125,6 +150,17 @@ select {
   font-size: 22px;
   letter-spacing: 1px;
   font-family: 'Times New Roman', Times, serif;
+}
+
+.welcome-text {
+  margin: 1em;
+  font-size: 20px;
+  position: absolute;
+  top: 30%;
+  color: black;
+  text-transform: uppercase;
+  font-family: 'Lucida Console', Monaco, monospace;
+  animation: bounce 2.5s infinite;
 }
 
 .option-or {
@@ -205,6 +241,7 @@ select {
   padding: 20px;
   margin: 10px;
   width: 50%;
+
   position: relative;
   left: 20%;
   background-color: #f7f5f0;
@@ -380,6 +417,7 @@ select {
 }
 .individual-product-home:hover {
   background-color: #feffe0;
+  transform: scale(1.03);
 }
 .sidebar-buttons:hover {
   left: 15px; /* On mouse-over, make the elements appear as they should */
