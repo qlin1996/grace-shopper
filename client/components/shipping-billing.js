@@ -495,14 +495,14 @@ class Shipping extends Component {
                 </div>
                 <div>
                   <br />
-                  <button
+                  {/* <button
                     type="button"
                     className="save-info-button"
                     value={userId}
                     onClick={this.handleSelectSubmit}
                   >
                     <img src="/check.png" className="icon-logo-2 img-fluid" />
-                  </button>
+                  </button> */}
                   <Link to="/review-order">
                     <button className="review-button" type="button">
                       Review Order
@@ -518,14 +518,14 @@ class Shipping extends Component {
                   Review Order
                 </button>
               </Link>
-              <button
+              {/* <button
                 className="save-info-button2"
                 type="button"
                 value={userId}
                 onClick={this.handleSelectSubmit}
               >
                 <img src="/check.png" className="icon-logo-2 img-fluid" />
-              </button>
+              </button> */}
             </div>
           )}
         </div>
@@ -533,6 +533,7 @@ class Shipping extends Component {
     )
   }
 }
+
 const mapState = state => {
   return {
     user: state.user

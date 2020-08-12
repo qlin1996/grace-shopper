@@ -52,7 +52,7 @@ class ReviewOrder extends Component {
         <h1>Review Order</h1>
         {user.billingStreetAddress !== '' ? (
           <div>
-            <h2>Bill To:</h2>
+            {/* <h2>Bill To:</h2>
             <p>{user.billingStreetAddress}</p>
             <p>
               {user.billingCity}, {user.billingState} {user.billingZipCode}
@@ -61,7 +61,7 @@ class ReviewOrder extends Component {
             <p>{user.shippingStreetAddress}</p>
             <p>
               {user.shippingCity}, {user.shippingState} {user.shippingZipCode}
-            </p>
+            </p> */}
 
             <h2>Your Order:</h2>
             {products.map(product => {
@@ -78,11 +78,11 @@ class ReviewOrder extends Component {
           </div>
         ) : (
           <div>
-            <h2>Ship To:</h2>
-            <p>{user.shippingStreetAddress}</p>
+            {/* <h2>Ship To:</h2> */}
+            {/* <p>{user.shippingStreetAddress}</p>
             <p>
               {user.shippingCity}, {user.shippingState} {user.shippingZipCode}
-            </p>
+            </p> */}
 
             <h2>Your Order:</h2>
             {products.map(product => {
