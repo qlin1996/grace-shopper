@@ -2,77 +2,6 @@
 const db = require('../server/db')
 const {User, Product, Order, OrderItem} = require('../server/db/models')
 const faker = require('faker')
-const products = [
-  {
-    name: 'head & shoulders',
-    description: 'good for your hair',
-    price: 799,
-    quantityInStock: 10,
-    category: 'Phone'
-  },
-  {
-    name: 'axe',
-    description: 'you will smell good',
-    price: 599,
-    quantityInStock: 10
-  },
-  {
-    name: 'cantu',
-    description: 'good for your hair',
-    price: 1099,
-    quantityInStock: 10,
-    category: 'Computer'
-  },
-  {
-    name: 'Tablet',
-    description: 'good for your hair',
-    price: 1099,
-    quantityInStock: 10,
-    category: 'Tablet'
-  },
-  {
-    name: 'Tablet Mini',
-    description: 'good for your hair',
-    price: 1111,
-    quantityInStock: 10,
-    category: 'Tablet'
-  },
-  {
-    name: 'CRT TV ',
-    description: 'good for your hair',
-    price: 1099,
-    quantityInStock: 10,
-    category: 'TV'
-  },
-  {
-    name: 'OLed',
-    description: 'good for your hair',
-    price: 1099,
-    quantityInStock: 10,
-    category: 'TV'
-  },
-  {
-    name: 'Plasma',
-    description: 'good for your hair',
-    price: 1099,
-    quantityInStock: 10,
-    category: 'TV'
-  },
-  {
-    name: 'Juke',
-    description: 'good for your hair',
-    price: 1099,
-    quantityInStock: 10,
-    category: 'Phone'
-  },
-  {
-    name: 'Google Pixel',
-    description: 'good for your hair',
-    price: 1099,
-    quantityInStock: 10,
-    category: 'Phone'
-  }
-]
 const orders = [
   {
     userId: 1
@@ -118,6 +47,16 @@ async function seed() {
     })
     users.push(user.dataValues)
   }
+  const claire = User.create({
+    firstName: 'Claire',
+    lastName: 'Giordano',
+    email: 'cgiordano1@gmail.com',
+    password: 'claire',
+    isAdmin: 'yes',
+    isGuest: 'no'
+  })
+  users.push(claire)
+
   const products = []
   for (let i = 0; i < 25; i++) {
     const product = await Product.create({
