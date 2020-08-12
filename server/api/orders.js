@@ -4,7 +4,7 @@ const {User} = require('../db/models')
 
 //proctection A.K.A. isAdmin
 const isAdmin = (req, res, next) => {
-  if (!User.user && !User.isAdmin) {
+  if (User.isAdmin === 'no') {
     const error = new Error("you can't hack us")
     res.status(401).send(error)
     return next(error)
@@ -14,7 +14,7 @@ const isAdmin = (req, res, next) => {
 }
 
 //GET --> /api/orders/
-router.get('/', isAdmin, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const orders = await Order.findAll()
     res.status(200).json(orders)

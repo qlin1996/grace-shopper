@@ -533,8 +533,8 @@ const mapDispatchToProps = dispatch => {
     updateUser: (id, updateData) => {
       return dispatch(updateUser(id, updateData))
     },
-    getUser: () => {
-      return dispatch(getUserInfo())
+    getUser: userId => {
+      return dispatch(getUserInfo(userId))
     }
   }
 }

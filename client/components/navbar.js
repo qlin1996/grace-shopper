@@ -1,31 +1,59 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {getCartItems} from '../store/shoppingCart'
 
-const Navbar = ({handleClick, isLoggedIn, cart, getItems}) => {
+
+const Navbar = ({handleClick, user, isLoggedIn, cart, getItems}) => {
   //HARD CODE ORDER ID
   const orderId = 1
   useEffect(() => {
     getItems(orderId)
   })
+  const admin = user.isAdmin || ''
 
-  console.log('CART', cart)
   return (
     <div>
       <img src="/full-logo.png" alt="image" className="nav-logo" />
       <nav>
-        {isLoggedIn ? (
+        {isLoggedIn && admin === 'yes' ? (
           <div>
             {/* The navbar will show these links after you log in */}
             <Link to="/home">Home</Link>
             <Link to="/products">Products</Link>
             <Link to="/bestSellers">Best Sellers</Link>
+            <Link to="/cart">Cart</Link>
             <Link to="/shipping-billing">Shipping</Link>
             <Link to="/about">About Us</Link>
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">
+              Cart{' '}
+              {cart.products ? (
+                <h1>{cart.products.length}</h1>
+              ) : (
+                <h1>IT DIDNT WORK</h1>
+              )}
+            </Link>
+            <Link to="/all-users">Edit Users</Link>
+            <a href="/home" onClick={handleClick}>
+              Logout
+            </a>
+          </div>
+        ) : isLoggedIn && admin === 'no' ? (
+          <div>
+            <Link to="/home">Home</Link>
+            <Link to="/products">Products</Link>
+            <Link to="/shipping-billing">Shipping</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/cart">
+              Cart{' '}
+              {cart.products ? (
+                <h1>{cart.products.length}</h1>
+              ) : (
+                <h1>IT DIDNT WORK</h1>
+              )}
+            </Link>
             <a href="/home" onClick={handleClick}>
               Logout
             </a>
@@ -38,6 +66,7 @@ const Navbar = ({handleClick, isLoggedIn, cart, getItems}) => {
             <Link to="/shipping-billing">Shipping</Link>
             <Link to="/login">LOGIN ⇋ SIGNUP</Link>
             <Link to="/about">About Us</Link>
+
             <Link to="/cart">
               Cart{' '}
               {cart.products ? (
@@ -60,7 +89,8 @@ const Navbar = ({handleClick, isLoggedIn, cart, getItems}) => {
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
-    cart: state.cart
+    cart: state.cart,
+    user: state.user
   }
 }
 
